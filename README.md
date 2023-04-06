@@ -1,6 +1,6 @@
 **Team:** chatgpt-free
 
 **Componenta:**
-* Andi Mititel
+* Andi Mititelu
 * Stefan Danila
 * Florin Rotaru
