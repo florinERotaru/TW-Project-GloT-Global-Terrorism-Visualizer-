@@ -1,1 +1,6 @@
-# TW-Project-GloT-Global-Terrorism-Visualizer-
+**Team:** chatgpt-free
+
+**Componenta:**
+* Andi Mititel
+* Stefan Danila
+* Florin Rotaru
