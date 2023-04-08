@@ -6,10 +6,15 @@
   font-family: "Google Sans Regular";
   box-sizing: border-box;
 }
+html {
+    height: 100%;
 
+}
 body {
   background: #fefefe;
-
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 header {
@@ -22,11 +27,22 @@ header {
   padding: 0 100px;
 }
 
+.section {
+    height: 100%;
+    padding-top: 20px;
+}
+
+a {
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+    color: black;
+}
 .logo {
   font-size: 28px;
   font-weight: bold;
   color: #fefefe;
 }
+
 
 .hamburger {
   display: none;
@@ -38,6 +54,7 @@ header {
 }
 
 .nav-bar ul li a {
+
   display: block;
   color: #fefefe;
   font-size: 20px;
@@ -53,7 +70,7 @@ header {
 
 }
 
-.nav-bar ul li a.active {
+.nav-bar ul li a:active {
   color: #11101b;
   background: #fefefe;
 
