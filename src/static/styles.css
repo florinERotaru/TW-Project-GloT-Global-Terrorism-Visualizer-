@@ -94,13 +94,14 @@ a {
     cursor: pointer;
   }
   .hamburger .line {
+
     width: 30px;
     height: 3px;
     background: #fefefe;
     margin: 6px 0;
   }
   .nav-bar {
-    height: 450px;
+    height: 0px;
     position: absolute;
     top: 80px;
     left: 0;
@@ -151,3 +152,4 @@ a {
 .single-goods img {
   /* width: 220px; */
 }
+/* - - - - - --- - - - - - -- */

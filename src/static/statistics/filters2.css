@@ -1,0 +1,247 @@
+
+:root {
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #38357a;
+  --darkgray: #19154c;
+}
+
+.filter-container select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-family: "Google Sans Regular";
+}
+
+.filter-container select::-ms-expand {
+  display: none;
+}
+
+/* ================================= SELECT REGION ========================================= */
+
+  .filter-container .select-region {
+    position: static;
+    bottom: 500px;
+    margin-left: 20px;
+    font-size: 14px;
+  }
+
+  /* Remove IE arrow */
+
+  /* Custom Select wrapper */
+  .filter-container .select-region {
+    position: static;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+  }
+  /* Arrow */
+  .filter-container .select-region::after {
+    content: '\25BC';
+    position: static;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #38357a;
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+  /* Transition */
+  .filter-container .select-region:hover::after {
+    color: #f39c12;
+  }
+
+
+/* ================================== ATTACK TYPE ========================================== */
+
+.filter-container .select-attack-type {
+  position: static;
+  bottom: 440px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* Remove IE arrow */
+
+/* Custom Select wrapper */
+.filter-container .select-attack-type {
+  position: static;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.filter-container .select-attack-type::after {
+  content: '\25BC';
+  position: static;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #38357a;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.filter-container .select-attack-type:hover::after {
+  color: #f39c12;
+}
+
+/* ==================================== MAIN TARGET ============================== */
+
+
+.filter-container .select-main-target {
+  position: static;
+  bottom: 380px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* Remove IE arrow */
+
+/* Custom Select wrapper */
+.filter-container .select-main-target {
+  position: static;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.filter-container .select-main-target::after {
+  content: '\25BC';
+  position: static;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #38357a;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.filter-container .select-main-target:hover::after {
+  color: #f39c12;
+}
+
+/* ==================================== TARGET NATIONALITY ============================== */
+
+.filter-container .select-nationality {
+  position: static;
+  bottom: 320px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* Remove IE arrow */
+
+/* Custom Select wrapper */
+.filter-container .select-nationality {
+  position: static;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.filter-container .select-nationality::after {
+  content: '\25BC';
+  position: static;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #38357a;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.filter-container .select-nationality:hover::after {
+  color: #f39c12;
+}
+
+/* ================================ MAIN WEAPON ====================================== */
+
+
+.filter-container .select-main-weapon {
+  position: static;
+  bottom: 260px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* Remove IE arrow */
+
+/* Custom Select wrapper */
+.filter-container .select-main-weapon {
+  position: static;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.filter-container .select-main-weapon::after {
+  content: '\25BC';
+  position: static;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #38357a;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.filter-container .select-main-weapon:hover::after {
+  color: #f39c12;
+}
+
+/* ==================================== SELECT CHART ====================================== */
+
+
+.filter-container .select-chart {
+  position: static;
+  bottom: 200px;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* Remove IE arrow */
+
+/* Custom Select wrapper */
+.filter-container .select-chart {
+  position: static;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.filter-container .select-chart::after {
+  content: '\25BC';
+  position: static;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #38357a;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.filter-container .select-chart:hover::after {
+  color: #f39c12;
+}
