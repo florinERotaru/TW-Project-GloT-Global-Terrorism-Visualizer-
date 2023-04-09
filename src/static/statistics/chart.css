@@ -1,6 +1,7 @@
 /* ====================================== GENERATE BUTTON =============================================== */
 
 #generate-chart {
+
   font-family: Hack, monospace;
   background: #19154c;
   color: #ffffff;
@@ -11,9 +12,9 @@
   transition: all 0.5s;
   border-radius: 10px;
   width: auto;
-  position: relative;
-  top: 150px;
-  left: 40px;
+  position: static;
+  bottom: 100px;
+  left: 60px;
 }
 
 #generate-chart::after {
@@ -42,22 +43,31 @@
 }
 
 /* ========================================= CHARTS =============================================== */
+.chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 
 #myPieChart {
-  position: relative;
-  bottom: 400px;
-  left: 600px;
+  bottom: 50px;
+  right: 300px;
   margin: 20px;
-  width: 500px; 
+  width: 400px; 
   height: 300px;
 }
 
-
 #myBarChart {
-  position: relative;
-  bottom: 400px;
-  left: 550px;
+  bottom: 0vh;
+  right: 300px;
   margin: 20px;
-  width: 500px; 
+  width: 400px; 
   height: 300px;
+}
+@media only screen and (max-width: 900px) {
+    .chart {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 }
