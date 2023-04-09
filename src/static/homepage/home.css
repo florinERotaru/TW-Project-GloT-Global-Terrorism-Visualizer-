@@ -13,13 +13,17 @@
 .home-text {
   text-align: border;
   position: relative;
+
   top: 36%;
   left: 55%;
   transform: translate(-50%, -50%);
-  color:  #f1f1f1  ;
+  color:  #c7cfb5  ;
 }
 
 p {
+  background-color:  rgba(236, 240, 241, 0.15);
+  border-radius: 15px;
+  font-family: "Lucida Console", "Courier New", monospace;
   width: 30vw;
   padding: 13px;
   margin: 50px;
