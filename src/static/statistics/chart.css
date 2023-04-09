@@ -11,9 +11,9 @@
   transition: all 0.5s;
   border-radius: 10px;
   width: auto;
-  position: static;
-  bottom: 100px;
-  left: 60px;
+  position: relative;
+  top: 150px;
+  left: 40px;
 }
 
 #generate-chart::after {
@@ -44,19 +44,20 @@
 /* ========================================= CHARTS =============================================== */
 
 #myPieChart {
-  position: static;
-  bottom: 250px;
-  right: 300px;
+  position: relative;
+  bottom: 400px;
+  left: 600px;
   margin: 20px;
-  width: 400px; 
+  width: 500px; 
   height: 300px;
 }
 
+
 #myBarChart {
-  position: static;
-  bottom: 0vh;
-  right: 300px;
+  position: relative;
+  bottom: 400px;
+  left: 550px;
   margin: 20px;
-  width: 400px; 
+  width: 500px; 
   height: 300px;
 }
