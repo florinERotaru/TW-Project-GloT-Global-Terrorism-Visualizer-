@@ -62,7 +62,7 @@ create table terrorism(
 --test
 select * from terrorism where country = 'Romania';
 select * from terrorism where iyear=1970;
-
+select * from terrorism where event_id = 123;
 --THE PRIMARY KEY IS THE ID ONLY => THE TABLE IS IN 2NF
 
 --3NF NORMALIZATION:
@@ -238,7 +238,7 @@ insert into attacks
     weapdetail, nkill, nwound, property, propvalue, propcomment
     from terrorism;
 
-create table victims(
+create table victims( 
     id serial PRIMARY key,
     target_id integer not null,
     target_subtype_id integer,
@@ -247,6 +247,7 @@ create table victims(
     ntlty_id integer,
     attack_id integer
 ) 
+
 
 
 insert into victims (target_id, target_subtype_id, corp, victim, ntlty_id, attack_id)
@@ -264,3 +265,103 @@ insert into victims (target_id, target_subtype_id, corp, victim, ntlty_id, attac
 --test
 select attacks.id, date, organization, victim from attacks join victims on 
                             attacks.id = victims.attack_id where attacks.id=586;
+
+
+-- REFERENTIAL INTEGRITY
+
+    --VICTIMS AND ATTACKS : MANY TO ONE 
+    --when an attack is deleted, the rows from 'victims' are also deleted
+    alter table victims
+    add constraint victimRefAttack
+        foreign key (attack_id) references attacks (id) 
+                                on delete cascade;
+                                
+    --test
+    begin;
+    select * from victims where attack_id = 586;
+    delete from attacks where id = 586;
+    select * from victims where attack_id = 586;
+    rollback;
+    commit;
+
+
+    --when a country is deleted, all the attacks with that country_id from 'attacks' will be set to null correspondingly
+   
+        DROP FUNCTION country_trigger_function();
+        drop trigger country_trigger on countries;
+
+    CREATE OR REPLACE FUNCTION country_trigger_function() 
+    RETURNS TRIGGER 
+    LANGUAGE PLPGSQL
+        AS $$
+    DECLARE
+        v_id int;
+    BEGIN
+        select old.id into v_id from countries;
+        update attacks
+        set country_id = null
+        where country_id = v_id;
+        --also delete victims nationality
+        update victims
+        set ntlty_id = null
+        where ntlty_id = v_id;
+        return new;
+    END;
+    $$
+
+
+    create trigger country_trigger 
+    after delete on countries
+    for each row execute procedure country_trigger_function();
+
+    --test
+    begin;
+    SELECT * from countries where id = 11;
+    SELECT * from victims where ntlty_id = 11;
+
+    delete from countries where id = 11;
+
+    SELECT * from victims where ntlty_id = 11;
+    SELECT * from countries where id = 11;
+    rollback;
+    commit;
+
+
+
+        --when a subtargtype is deleted, the victims  with that subtarget id will have null value
+        -- DROP FUNCTION victims_trigger_function();
+        -- drop trigger victims_trigger on targsubtypes;
+
+    CREATE OR REPLACE FUNCTION victims_trigger_function() 
+    RETURNS TRIGGER 
+    LANGUAGE PLPGSQL
+        AS $$
+    DECLARE
+        v_id int;
+    BEGIN
+        select old.id into v_id from targsubtypes;
+        update victims
+        set target_subtype_id = null
+        where target_subtype_id = v_id;
+        return new;
+
+ 
+    END;
+    $$
+
+
+    create trigger victims_trigger 
+    after delete on targsubtypes
+    for each row execute procedure victims_trigger_function();
+
+    --test
+    begin;
+    -- SELECT * from victims where target_subtype_id = 11;
+
+    delete from targsubtypes where id = 11;
+
+    SELECT * from victims where target_subtype_id = 11;
+    rollback;
+    commit;
+
+
