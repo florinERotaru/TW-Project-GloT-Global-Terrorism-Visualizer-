@@ -35,10 +35,16 @@ font-size: 23px;
 }
 
 .map {
+<<<<<<< HEAD
   background-image: url("/static/images/map.png");
   background-color: #cccccc;
   height: 970px;
   width: auto;
+=======
+  background-image: url("../images/map.png");
+  background-color: #cccccc;
+  height: 970px;
+>>>>>>> 68b4dc1c55828cb87d23ebb10a9919ea3dbfdbea
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
