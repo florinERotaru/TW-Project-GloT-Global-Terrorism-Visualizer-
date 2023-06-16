@@ -1,0 +1,76 @@
+.home {
+  background-image: url("/static/images/home.jpeg");
+  background-color: #cccccc;
+  height: 970px;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: -1;
+  overflow:hidden;
+}
+.home-text {
+  text-align: border;
+  position: relative;
+
+  top: 36%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  color:  #c7cfb5  ;
+}
+
+p {
+  background-color:  rgba(236, 240, 241, 0.15);
+  border-radius: 15px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  width: 30vw;
+  padding: 13px;
+  margin: 50px;
+}
+
+.p1 {
+font-size: 23px;
+}
+
+.map {
+  background-image: url("/static/images/map.png");
+  background-color: #cccccc;
+  height: 970px;
+  width: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: -1;
+  overflow:hidden;
+}
+.map-text {
+   text-align: border;
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+ }
+
+ @media only screen and (max-width: 900px) {
+     .home-text {
+       text-align: center;
+       position: relative;
+       top: 36%;
+       left: 55%;
+       transform: translate(-50%, -50%);
+       color:  #f1f1f1  ;
+     }
+    p {
+      width: 50vw;
+      margin: 20%;
+    }
+    .p1 {
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 20px;
+    }
+ }
