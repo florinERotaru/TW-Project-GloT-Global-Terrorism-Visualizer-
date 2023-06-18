@@ -34,9 +34,8 @@ p {
 font-size: 23px;
 }
 
-.map {
-  background-image: url("/static/images/map.png");
-  background-color: #cccccc;
+.map_bg {
+  background-color: #cccccc8a;
   height: 970px;
   width: auto;
   background-position: center;
@@ -44,7 +43,6 @@ font-size: 23px;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
-  z-index: -1;
   overflow:hidden;
 }
 .map-text {

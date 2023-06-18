@@ -48,7 +48,9 @@
                 </ul>
             </nav>
         </header>
+
         <div class="vertical-container">
+
             <div class="section home" id="home">
                 <div class="home-text">
                     <p class = "p1">Terrorism, in its broadest sense, is the use of intentional violence
@@ -73,7 +75,6 @@
                             </div>
                         </a>
                     </div>
-
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
                         <img class = "image" type="image/jpeg" src="/static/images/img2.jpeg" style="width:100%" alt="..." loading="lazy">
@@ -83,7 +84,6 @@
                             </div>
                         </a>
                     </div>
-
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 3</div>
                         <img class = "image" src="/static/images/img3.jpg" style="width:100%" alt="..." loading="lazy">
@@ -93,137 +93,160 @@
                             </div>
                         </a>
                     </div>
-
                     <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
                 <br>
-
                 <!-- The dots/circles -->
                 <div style="text-align:center">
                     <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
-
             </div>
-                <div class="section" id="stat">
-                    <div class="section-header">Statistics </div>
-                    <br>
-                    <div class="horizontal-container">
-                        <form class="form" id="formId">
-                            <div class="bars">
-                                <input type="text" placeholder="Search here...">
-                                <input type="submit" value="Submit">
-                            </div>
-                            <label for="region">Select Region: </label>
-                            <br>
-                            <select>
-                                <option value="1">Select region: </option>
-                                <option value="2">Central America</option>
-                                <option value="3">Western Europe</option>
-                                <option value="4">East Asia</option>
-                                <option value="5">Middle East & North Africa</option>
-                                <option value="6">Southeast Asia</option>
-                                <option value="7">North America</option>
-                            </select>
-                            <br>
-                            <label for="attack-type">Select Attack Type: </label>
-                            <br>
-                            <select>
-                                <option value="1">Attack type: </option>
-                                <option value="2">Assassination</option>
-                                <option value="3">Hostage Taking</option>
-                                <option value="4">Bombing</option>
-                                <option value="5">Armed Assault</option>
-                                <option value="6">Other Crime Type</option>
-                            </select>
-                            <br>
-                            <label for="main-target">Select Main Target: </label>
-                            <br>
-                            <select>
-                                <option value="1">Main target: </option>
-                                <option value="2">Big Target</option>
-                                <option value="3">Medium Target Taking</option>
-                                <option value="4">Small Target</option>
-                                <option value="5">Dangerous Target</option>
-                                <option value="6">Other Targets</option>
-                            </select>
-                            <br>
-                            <label for="main-target">Select Main Nationality: </label>
-                            <select>
-                                <option value="1">Target nationality: </option>
-                                <option value="2">Indian</option>
-                                <option value="3">Chinese</option>
-                                <option value="4">American</option>
-                                <option value="5">French</option>
-                                <option value="6">Russian</option>
-                            </select>
-                            <br>
-                            <label for="main-weapon">Select Main Weapon: </label>
-                            <br>
-                            <select>
-                                <option value="1">Main weapon: </option>
-                                <option value="2">Watergun</option>
-                                <option value="3">AK-47</option>
-                                <option value="4">Glass bottle</option>
-                                <option value="5">Fists</option>
-                                <option value="6">Hands</option>
-                            </select>
-                            <br>
-                            <label for="chart">Select-Chart: </label>
-                            <br>
-                            <select>
-                                <option value="1">Chart Type: </option>
-                                <option value="2">Pie Chart</option>
-                                <option value="3">Bar Chart</option>
-                                <option value="4">Line Chart</option>
-                                <option value="5">Scatter Chart</option>
-                            </select>
 
-                            <input type="button" value="Analyze" id="generate-chart">
-                        </form>
-                        <div class="chart">
-                            <div id="myPieChart"></div>
-                            <div id="myBarChart"></div>
+            <div class="section" id="stat">
+                <div class="section-header">Statistics </div>
+                <br>
+                <div class="horizontal-container">
+                    <form class="form" id="formId">
+                        <div class="bars">
+                            <input type="text" placeholder="Search here...">
+                            <input type="submit" value="Submit">
                         </div>
-
+                        <label for="region">Select Region: </label>
+                        <br>
+                        <select>
+                            <option value="1">Select region: </option>
+                            <option value="2">Central America</option>
+                            <option value="3">Western Europe</option>
+                            <option value="4">East Asia</option>
+                            <option value="5">Middle East & North Africa</option>
+                            <option value="6">Southeast Asia</option>
+                            <option value="7">North America</option>
+                        </select>
+                        <br>
+                        <label for="attack-type">Select Attack Type: </label>
+                        <br>
+                        <select>
+                            <option value="1">Attack type: </option>
+                            <option value="2">Assassination</option>
+                            <option value="3">Hostage Taking</option>
+                            <option value="4">Bombing</option>
+                            <option value="5">Armed Assault</option>
+                            <option value="6">Other Crime Type</option>
+                        </select>
+                        <br>
+                        <label for="main-target">Select Main Target: </label>
+                        <br>
+                        <select>
+                            <option value="1">Main target: </option>
+                            <option value="2">Big Target</option>
+                            <option value="3">Medium Target Taking</option>
+                            <option value="4">Small Target</option>
+                            <option value="5">Dangerous Target</option>
+                            <option value="6">Other Targets</option>
+                        </select>
+                        <br>
+                        <label for="main-target">Select Main Nationality: </label>
+                        <select>
+                            <option value="1">Target nationality: </option>
+                            <option value="2">Indian</option>
+                            <option value="3">Chinese</option>
+                            <option value="4">American</option>
+                            <option value="5">French</option>
+                            <option value="6">Russian</option>
+                        </select>
+                        <br>
+                        <label for="main-weapon">Select Main Weapon: </label>
+                        <br>
+                        <select>
+                            <option value="1">Main weapon: </option>
+                            <option value="2">Watergun</option>
+                            <option value="3">AK-47</option>
+                            <option value="4">Glass bottle</option>
+                            <option value="5">Fists</option>
+                            <option value="6">Hands</option>
+                        </select>
+                        <br>
+                        <label for="chart">Select-Chart: </label>
+                        <br>
+                        <select>
+                            <option value="1">Chart Type: </option>
+                            <option value="2">Pie Chart</option>
+                            <option value="3">Bar Chart</option>
+                            <option value="4">Line Chart</option>
+                            <option value="5">Scatter Chart</option>
+                        </select>
+                        <input type="button" value="Analyze" id="generate-chart">
+                    </form>
+                    
+                    <div class="chart">
+                        <div id="myPieChart"></div>
+                        <div id="myBarChart"></div>
                     </div>
                 </div>
+                <button class="export-button-stats" onclick="openPopupStats()">Export</button>
+            <div id="popup_stats" class="popup_stats">
+                <button class = "popup_button_stats" onclick="downloadCsvStats()">
+                    <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
+                </button>
+                <button class = "popup_button_stats" onclick="downloadPngStats()">
+                    <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
+                </button>
+                <button class = "popup_button_stats" onclick="downloadSvgStats()">
+                    <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
+                </button>
+            </div>
+            </div>
 
-                <div class="section map" id="mapping">
-                    <div class="section-header">Map Visualizer</div>
-                    <br>
-                    <div class="horizontal-container">
-                        <form class="form">
-                            <label for="interval">From:</label>
-                            <input type="date" id="interval" name="interval">
-                            <br>
-                            <label for="interval">Until:</label>
-                            <input type="date" id="interval" name="interval">
-                            <br>
-                            <label for="organization">Organization Name:</label>
-                            <select id="Organization" name="Organisation">
-                                <option value="Black Panthers">Black Panthers</option>
-                                <option value="ISIS">ISIS</option>
-                                <option value="Al-Qaeeda">Al-Qaeeda</option>
-                                <option value="Irish Republican Army">Irish Republican Army</option>
-                                <option value="Unknown">Unknown</option>
-                            </select>
-                            <br>
-                            <input type="submit" value="Analyze">
-                        </form>
-                        <div id="map"></div>
-                    </div>
+            <div class="section map_bg" id="mapping">
+                <div class="section-header">Map Visualizer</div>
+                <br>
+                <div class="horizontal-container">
+                    <form class="form">
+                        <label for="interval">From:</label>
+                        <input type="date" id="interval" name="interval">
+                        <br>
+                        <label for="interval">Until:</label>
+                        <input type="date" id="interval" name="interval">
+                        <br>
+                        <label for="organization">Organization Name:</label>
+                        <select id="Organization" name="Organisation">
+                            <option value="Black Panthers">Black Panthers</option>
+                            <option value="ISIS">ISIS</option>
+                            <option value="Al-Qaeeda">Al-Qaeeda</option>
+                            <option value="Irish Republican Army">Irish Republican Army</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                        <br>
+                        <input type="submit" value="Analyze">
+                    </form>
+                    <div id="map"></div>
+                    <button class="export-button" onclick="openPopup()">Export</button>
+                        <div id="popup" class="popup">
+                            <button class = "popup_button" onclick="downloadCsv()">
+                                <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
+                            </button>
+                            <button class = "popup_button" onclick="downloadPng()">
+                                <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
+                            </button>
+                            <button class = "popup_button" onclick="downloadSvg()">
+                                <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
+                            </button>
+                        </div>
                 </div>
+            </div>
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top">
             <span>&#8686;</span>
         </button>
+
         <script src="/static/scrollTopButton.js"> </script>
         <script src="/static/statistics/filter.js"> </script>
         <script src="/static/animate.js"> </script>
+        <script src="/static/route.js"></script>
 
         <!-- Script pentru nav-bar cand max-width = 900px -->
         <script>
@@ -234,42 +257,26 @@
               }
         </script>
 
+        <!-- Script pentru pop-up export -->
         <script>
-            // Get references to all the divs with the specified class
-            const targetDivs = document.querySelectorAll('.section');
-
-            // Function to handle scroll event with debounce
-            function debounce(func, delay) {
-                let timer;
-                return function () {
-                    clearTimeout(timer);
-                    timer = setTimeout(func, delay);
-                };
+            function openPopup() {
+                var popup = document.getElementById('popup');
+                if (popup.style.display === "none") {
+                    popup.style.display = "flex";
+                    popup.style.justifyContent = "center";
+                }
+                else popup.style.display = "none";
             }
-
-            // Function to handle URL change logic
-            function handleURLChange() {
-                const viewportTop = window.scrollY;
-                const viewportBottom = viewportTop + window.innerHeight;
-
-                // Loop through the target divs and check if they are in view
-                targetDivs.forEach((div) => {
-                    const divTop = div.offsetTop;
-                    const divBottom = divTop + div.offsetHeight;
-
-                    // Check if the div is at least 50% in the viewport
-                    if (divTop <= viewportBottom - (div.offsetHeight * 0.5) && divBottom >= viewportTop + (div.offsetHeight * 0.5)) {
-                        const id = div.getAttribute('id');
-                        // Modify the URL using the History API
-                        history.pushState({}, '', `/#${id}`); // Use the div's id in the URL
-                    }
-                });
-            }
-
-            // Attach debounced scroll event listener to the window object
-            window.addEventListener('scroll', debounce(handleURLChange, 200));
         </script>
-
+        <script>
+            function openPopupStats() {
+                var popup = document.getElementById('popup_stats');
+                if (popup.style.display === "none") {
+                    popup.style.display = "block";
+                }
+                else popup.style.display = "none";
+            }
+        </script>
 
         <!--Script pentru fade scroll-->
         <script>
@@ -285,18 +292,6 @@
           });
         });
         </script>
-        <script>
-            $(window).scroll(function() {
-          var scrollTop = $(this).scrollTop();
 
-          $('.map').css({
-            opacity: function() {
-              var elementHeight = $(this).height();
-              opacity = (1 - ((elementHeight - scrollTop) / elementHeight));
-              return opacity;
-            }
-          });
-        });
-        </script>
     </body>
 </html>

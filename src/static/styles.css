@@ -255,6 +255,117 @@ a:hover .text {
   to {opacity: 1}
 }
 
+/* --   EXPORT BUTTONS   -- */
+#stat {
+  position: relative;
+}
+
+.export-button-stats {
+  position: absolute;
+  bottom: 2rem;
+  left: 101rem;
+  padding: 10px;
+}
+.popup_stats {
+  display: none;
+  position: absolute;
+  bottom: 5rem;
+  left: 99rem;
+}
+.popup_stats .popup_button_stats {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 25%;
+  background-color:transparent;
+}
+.popup_stats .popup_button_stats:last-child:hover {
+  background-color:#8ef88a8a;
+}
+.popup_stats .popup_button_stats:last-child:active {
+  background-color:#32f52b;
+}
+.popup_stats .popup_button_stats:first-child:hover {
+  background-color:#80808080;
+}
+.popup_stats .popup_button_stats:first-child:active {
+  background-color:#404140;
+}
+.popup_stats .popup_button_stats:hover {
+  border: none;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  background-color:#6beef3;
+}
+.popup_stats .popup_button_stats:active {
+  background-color: #52cafa;
+  box-shadow: 0 1px #c0c0c0;
+  transform: translateY(3px);
+}
+.popup_button_stats img {
+  width: 35px;
+  justify-content: center;
+  height: 35px;
+}
+
+.export-button {
+  position: absolute;
+  bottom: 6rem;
+  right: 6.5rem;
+  padding: 10px;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  bottom: 9rem;
+  right: 5rem;
+  height: 40px;
+}
+
+.popup .popup_button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 25%;
+  background-color:transparent;
+}
+
+.popup .popup_button:last-child:hover {
+  background-color:#8ef88a8a;
+}
+.popup .popup_button:last-child:active {
+  background-color:#32f52b;
+}
+
+.popup .popup_button:first-child:hover {
+  background-color:#80808080;
+}
+.popup .popup_button:first-child:active {
+  background-color:#404140;
+}
+
+.popup .popup_button:hover {
+  border: none;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+  background-color:#6beef3;
+}
+
+.popup .popup_button:active {
+  background-color: #52cafa;
+  box-shadow: 0 1px #c0c0c0;
+  transform: translateY(3px);
+}
+
+.popup_button img {
+  width: 35px;
+  justify-content: center;
+  height: 35px;
+}
+/* --                      -- */
 @media only screen and (max-width: 1320px) {
   header{
     padding: 0 50px;
