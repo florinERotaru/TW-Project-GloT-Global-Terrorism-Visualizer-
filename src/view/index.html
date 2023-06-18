@@ -31,16 +31,16 @@
             <nav class="nav-bar">
                 <ul>
                     <li>
-                        <a href="#" id="home" class="active scrollable">Home</a>
+                        <a href="#home" class="active scrollable">Home</a>
                     </li>
                     <li>
-                        <a href="#" id="news" class="scrollable">News</a>
+                        <a href="#news" class="scrollable">News</a>
                     </li>
                     <li>
-                        <a href="#" id="stat" class="scrollable">Statistics</a>
+                        <a href="#stat" class="scrollable">Statistics</a>
                     </li>
                     <li>
-                        <a href="#" id="mapping" class="scrollable">Map</a>
+                        <a href="#mapping" class="scrollable">Map</a>
                     </li>
                     <li>
                         <a href="#" id="login" class="scrollable">Log-in</a>
@@ -192,7 +192,7 @@
                     </div>
                 </div>
 
-                <div class="section" id="mapping">
+                <div class="section map" id="mapping">
                     <div class="section-header">Map Visualizer</div>
                     <br>
                     <div class="horizontal-container">
@@ -233,6 +233,43 @@
                 navbar.classList.toggle("active");
               }
         </script>
+
+        <script>
+            // Get references to all the divs with the specified class
+            const targetDivs = document.querySelectorAll('.section');
+
+            // Function to handle scroll event with debounce
+            function debounce(func, delay) {
+                let timer;
+                return function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(func, delay);
+                };
+            }
+
+            // Function to handle URL change logic
+            function handleURLChange() {
+                const viewportTop = window.scrollY;
+                const viewportBottom = viewportTop + window.innerHeight;
+
+                // Loop through the target divs and check if they are in view
+                targetDivs.forEach((div) => {
+                    const divTop = div.offsetTop;
+                    const divBottom = divTop + div.offsetHeight;
+
+                    // Check if the div is at least 50% in the viewport
+                    if (divTop <= viewportBottom - (div.offsetHeight * 0.5) && divBottom >= viewportTop + (div.offsetHeight * 0.5)) {
+                        const id = div.getAttribute('id');
+                        // Modify the URL using the History API
+                        history.pushState({}, '', `/#${id}`); // Use the div's id in the URL
+                    }
+                });
+            }
+
+            // Attach debounced scroll event listener to the window object
+            window.addEventListener('scroll', debounce(handleURLChange, 200));
+        </script>
+
 
         <!--Script pentru fade scroll-->
         <script>

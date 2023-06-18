@@ -4,7 +4,7 @@ const path = require('path');
 
 const server = http.createServer((req, res) => {
   /*  <<-- HOMEPAGE LOADING -->> */
-  if (req.url === '/home') {
+  if (req.url === '/') {
     const loadHome = new Promise((resolve, reject) => {
       const filePath = path.join(process.cwd(), '../view/index.html');
       fs.readFile(filePath, 'utf8', (err, content) => {
@@ -49,8 +49,10 @@ const server = http.createServer((req, res) => {
     });
     })
    }
+   else {
+      console.log("SOMETHING ELSE!!");
+   }
 });
-
 
 const port = 3000;
 server.listen(port, () => {
