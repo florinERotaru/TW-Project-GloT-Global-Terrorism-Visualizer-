@@ -3,17 +3,10 @@
 //var sessions = require("../../api/server.js");
 //import { isLoggedIn } from "../../api/server.js";
 
-var isLoggedIn = false;
+var isLoggedIn;
 
 // Establish WebSocket connection
 const socket = new WebSocket("ws://localhost:3001");
-
-// // Add event listener for page unload/beforeunload
-// window.addEventListener("beforeunload", function () {
-//   if (socket.readyState === WebSocket.OPEN) {
-//     socket.close();
-//   }
-// });
 
 // Listen for messages from the server
 socket.addEventListener("message", function (event) {
