@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <title>TerroristTracker</title>
         <link rel="stylesheet" href="/static/styles.css">
         <link rel="stylesheet" href="/static/statistics/filtered-search.css">
@@ -14,10 +14,11 @@
         <link rel="stylesheet" href="/static/statistics/filters2.css">
         <link rel="stylesheet" href="/static/statistics/chart.css">
         <link rel="stylesheet" href="/static/homepage/home.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-              integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-                integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+        <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script src='https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js'></script>
+
     </head>
 
     <body>
@@ -188,17 +189,17 @@
                     </div>
                 </div>
                 <button class="export-button-stats" onclick="openPopupStats()">Export</button>
-            <div id="popup_stats" class="popup_stats">
-                <button class = "popup_button_stats" onclick="downloadCsvStats()">
-                    <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
-                </button>
-                <button class = "popup_button_stats" onclick="downloadPngStats()">
-                    <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
-                </button>
-                <button class = "popup_button_stats" onclick="downloadSvgStats()">
-                    <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
-                </button>
-            </div>
+                    <div id="popup_stats" class="popup_stats" style="display: none;">
+                        <button class = "popup_button_stats" onclick="downloadChartAsCsv()">
+                            <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
+                        </button>
+                        <button class = "popup_button_stats" onclick="downloadChartAsPng()">
+                            <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
+                        </button>
+                        <button class = "popup_button_stats" onclick="downloadChartAsSvg()">
+                            <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
+                        </button>
+                    </div>
             </div>
 
             <div class="section map_bg" id="mapping">
@@ -225,14 +226,14 @@
                     </form>
                     <div id="map"></div>
                     <button class="export-button" onclick="openPopup()">Export</button>
-                        <div id="popup" class="popup">
-                            <button class = "popup_button" onclick="downloadCsv()">
+                        <div id="popup" class="popup" style="display: none;">
+                            <button class = "popup_button" onclick="downloadMapAsCsv()">
                                 <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
                             </button>
-                            <button class = "popup_button" onclick="downloadPng()">
+                            <button class = "popup_button" onclick="downloadMapAsPng()">
                                 <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
                             </button>
-                            <button class = "popup_button" onclick="downloadSvg()">
+                            <button class = "popup_button" onclick="downloadMapAsSvg()">
                                 <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
                             </button>
                         </div>
@@ -247,6 +248,7 @@
         <script src="/static/statistics/filter.js"> </script>
         <script src="/static/animate.js"> </script>
         <script src="/static/route.js"></script>
+        <script src="/static/export.js"></script>
 
         <!-- Script pentru nav-bar cand max-width = 900px -->
         <script>
@@ -271,10 +273,11 @@
         <script>
             function openPopupStats() {
                 var popup = document.getElementById('popup_stats');
-                if (popup.style.display === "none") {
-                    popup.style.display = "block";
+                if (popup.style.display === 'none') {
+                    popup.style.display = 'flex';
+                    popup.style.justifyContent = 'center';
                 }
-                else popup.style.display = "none";
+                else popup.style.display = 'none';
             }
         </script>
 

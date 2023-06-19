@@ -1,4 +1,6 @@
 /* ===================================== PIE CHART ========================================= */
+var imageURI;
+
 document.getElementById('generate-chart').addEventListener('click', function() {
   google.charts.load('current', {packages: ['corechart']});
   google.charts.setOnLoadCallback(function() {
@@ -28,6 +30,8 @@ document.getElementById('generate-chart').addEventListener('click', function() {
 
     var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
     chart.draw(data, options);
+
+    imageURI = chart.getImageURI();
   });
 });
 

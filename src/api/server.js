@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
   /*  <<-- STATIC LOADING -->> */
   } else if(req.url.includes('static')) {
     const loadStatic = new Promise((resolve, reject) => {
-      const filePath = path.join(process.cwd(), '../', req.url);
+      let filePath = path.join(process.cwd(), '../', req.url);
       let mimeType = path.extname(filePath)
       let contentType = '';
       // load various file types
@@ -34,7 +34,13 @@ const server = http.createServer((req, res) => {
           case '.jpg': contentType = 'image/jpg'; break;
           case '.jpeg': contentType = 'image/jpeg'; break;
           case '.js': contentType = 'text/javascript'; break;
+          case '.ico' : contentType = 'image/x-icon'; break;
       }
+      if (req.url.includes('terrorist.png')) {
+        filePath = path.join(process.cwd(), '../static/images/terrorist.png');
+        contentType = 'image/png';
+      }
+
       fs.readFile(filePath, (err, content) => {
         if (err) {
           res.writeHead(500, { 'Content-Type': 'text/plain' });

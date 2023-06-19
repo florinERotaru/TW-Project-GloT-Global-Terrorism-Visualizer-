@@ -255,6 +255,10 @@ a:hover .text {
   to {opacity: 1}
 }
 
+#map {
+  width: 80vw;
+  height: 70vh;
+}
 /* --   EXPORT BUTTONS   -- */
 #stat {
   position: relative;
@@ -262,15 +266,16 @@ a:hover .text {
 
 .export-button-stats {
   position: absolute;
-  bottom: 2rem;
-  left: 101rem;
+  bottom: 4vh;
+  right: 6.4vw;
   padding: 10px;
 }
 .popup_stats {
   display: none;
   position: absolute;
-  bottom: 5rem;
-  left: 99rem;
+  bottom: 9vh;
+  right: 5vw;
+  height: 40px;
 }
 .popup_stats .popup_button_stats {
   border: none;
@@ -289,19 +294,20 @@ a:hover .text {
   background-color:#80808080;
 }
 .popup_stats .popup_button_stats:first-child:active {
-  background-color:#404140;
+  background-color:#40414086;
 }
 .popup_stats .popup_button_stats:hover {
   border: none;
   width: 40px;
   height: 40px;
-  transition: 0.3s;
+  transition: 0.15s;
   background-color:#6beef3;
 }
 .popup_stats .popup_button_stats:active {
   background-color: #52cafa;
   box-shadow: 0 1px #c0c0c0;
   transform: translateY(3px);
+  transition: 0.1s;
 }
 .popup_button_stats img {
   width: 35px;
@@ -311,16 +317,15 @@ a:hover .text {
 
 .export-button {
   position: absolute;
-  bottom: 6rem;
-  right: 6.5rem;
+  bottom: 10vh;
+  right: 5.4vw;
   padding: 10px;
 }
 
 .popup {
-  display: none;
   position: absolute;
-  bottom: 9rem;
-  right: 5rem;
+  bottom: 15vh;
+  right: 4vw;
   height: 40px;
 }
 
@@ -343,20 +348,21 @@ a:hover .text {
   background-color:#80808080;
 }
 .popup .popup_button:first-child:active {
-  background-color:#404140;
+  background-color:#40414086;
 }
 
 .popup .popup_button:hover {
   border: none;
   width: 40px;
   height: 40px;
-  transition: 0.3s;
+  transition: 0.15s;
   background-color:#6beef3;
 }
 
 .popup .popup_button:active {
   background-color: #52cafa;
   box-shadow: 0 1px #c0c0c0;
+  transition: 0.1s;
   transform: translateY(3px);
 }
 
@@ -473,7 +479,6 @@ a:hover .text {
       width: 50%;
       position: relative;
       overflow: hidden;
-      z-index: -1;
       margin: auto;
       margin-top: 30px;
     }
