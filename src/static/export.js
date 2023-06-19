@@ -1,6 +1,9 @@
-function downloadChartAsSvg() { // WIP
+function downloadChartAsSvg() { 
+    // asta e pentru pie-chartul ala mock, dar cand o sa fie un singur chart se va schimba doar valoarea asta
     const chartDiv = document.getElementById('myPieChart');
-    const chartSVG = chartDiv.innerHTML;
+
+    var chartSVG = chartDiv.getElementsByTagName('svg')[0].outerHTML;
+    chartSVG = chartSVG.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink" ');
 
     const svgBlob = new Blob([chartSVG], { type: 'image/svg+xml' });
  
@@ -13,7 +16,6 @@ function downloadChartAsSvg() { // WIP
 }
 
 function downloadChartAsPng() {
-    // Create a link element to download the PNG image
     const link = document.createElement('a');
     link.href = imageURI;
     link.download = 'piechart.png';
@@ -21,6 +23,7 @@ function downloadChartAsPng() {
 }
     
 function downloadMapAsPng() {
+    // asta dureaza mai mult, ar trebui un loading animation sau ceva
     leafletImage(map, function (err, canvas) {
         var dataURL = canvas.toDataURL();
 
