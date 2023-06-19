@@ -1,53 +1,58 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
 class TerroDBConnection {
-
-    static client = new Client({
-      host: 'localhost',
-      port: 5432, // Change it to the appropriate port if needed
-      database: 'webdb',
-      user: 'postgres',
-      password: '1234',
-    });
-
+  static pool = new Pool({
+    host: 'localhost',
+    port: 5432,
+    database: 'webdb',
+    user: 'postgres',
+    password: '1234',
+    max: 20, // Maximum number of connections in the pool
+    idleTimeoutMillis: 30000, // Time in milliseconds a connection can remain idle before being closed
+    connectionTimeoutMillis: 2000, // Time in milliseconds to wait for a new connection before timing out
+  });
 
   static async connect() {
     try {
-      await this.client.connect();
+      const client = await this.pool.connect();
       console.log('Connected to the database');
+      return client;
     } catch (error) {
       console.error('Error connecting to the database:', error);
+      throw error;
     }
   }
 
-  static async disconnect() {
+  static async disconnect(client) {
     try {
-      await this.client.end();
-      console.log('Disconnected from the database');
+      await client.release();
+      console.log('Released client back to the pool');
     } catch (error) {
       console.error('Error disconnecting from the database:', error);
+      throw error;
     }
   }
-
-  // Add other methods for interacting with the database
 
   // Example method to execute a query
   static async query(text, values) {
+    let client;
     try {
-      TerroDBConnection.connect();
-      const result = await this.client.query(text, values);
+      client = await this.connect();
+      const result = await client.query(text, values);
       return result.rows;
     } catch (error) {
       console.error('Error executing query:', error);
       throw error;
-    }
-    finally{
-      TerroDBConnection.disconnect();
+    } finally {
+      if (client) {
+        await this.disconnect(client);
+      }
     }
   }
 }
 
 module.exports = TerroDBConnection;
+
 
 TerroDBConnection.query('select * from regions')
 .then( (rows) => {
