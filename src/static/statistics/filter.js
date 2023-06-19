@@ -1,13 +1,14 @@
 /* ===================================== PIE CHART ========================================= */
-var imageURI;
+var imageURI = null;
+var dataPie = null;
 
 document.getElementById('generate-chart').addEventListener('click', function() {
   google.charts.load('current', {packages: ['corechart']});
   google.charts.setOnLoadCallback(function() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Element');
-    data.addColumn('number', 'Percentage');
-    data.addRows([
+    dataPie = new google.visualization.DataTable();
+    dataPie.addColumn('string', 'Element');
+    dataPie.addColumn('number', 'Percentage');
+    dataPie.addRows([
       ['Nitrogen', Math.random()],
       ['Oxygen', Math.random()],
       ['Hydrogen', Math.random()],
@@ -28,10 +29,10 @@ document.getElementById('generate-chart').addEventListener('click', function() {
       }
     };
 
-    var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-    chart.draw(data, options);
+    var pieChart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+    pieChart.draw(dataPie, options);
 
-    imageURI = chart.getImageURI();
+    imageURI = pieChart.getImageURI();
   });
 });
 
