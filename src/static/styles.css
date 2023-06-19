@@ -270,46 +270,46 @@ a:hover .text {
   right: 6.4vw;
   padding: 10px;
 }
-.popup_stats {
+.popup-stats {
   display: none;
   position: absolute;
   bottom: 9vh;
   right: 5vw;
   height: 40px;
 }
-.popup_stats .popup_button_stats {
+.popup-stats .popup-button-stats {
   border: none;
   width: 40px;
   height: 40px;
   border-radius: 25%;
   background-color:transparent;
 }
-.popup_stats .popup_button_stats:last-child:hover {
+.popup-stats .popup-button-stats:last-child:hover {
   background-color:#8ef88a8a;
 }
-.popup_stats .popup_button_stats:last-child:active {
+.popup-stats .popup-button-stats:last-child:active {
   background-color:#32f52b;
 }
-.popup_stats .popup_button_stats:first-child:hover {
+.popup-stats .popup-button-stats:first-child:hover {
   background-color:#80808080;
 }
-.popup_stats .popup_button_stats:first-child:active {
+.popup-stats .popup-button-stats:first-child:active {
   background-color:#40414086;
 }
-.popup_stats .popup_button_stats:hover {
+.popup-stats .popup-button-stats:hover {
   border: none;
   width: 40px;
   height: 40px;
   transition: 0.15s;
   background-color:#6beef3;
 }
-.popup_stats .popup_button_stats:active {
+.popup-stats .popup-button-stats:active {
   background-color: #52cafa;
   box-shadow: 0 1px #c0c0c0;
   transform: translateY(3px);
   transition: 0.1s;
 }
-.popup_button_stats img {
+.popup-button-stats img {
   width: 35px;
   justify-content: center;
   height: 35px;
@@ -329,7 +329,7 @@ a:hover .text {
   height: 40px;
 }
 
-.popup .popup_button {
+.popup .popup-button {
   border: none;
   width: 40px;
   height: 40px;
@@ -337,21 +337,21 @@ a:hover .text {
   background-color:transparent;
 }
 
-.popup .popup_button:last-child:hover {
+.popup .popup-button:last-child:hover {
   background-color:#8ef88a8a;
 }
-.popup .popup_button:last-child:active {
+.popup .popup-button:last-child:active {
   background-color:#32f52b;
 }
 
-.popup .popup_button:first-child:hover {
+.popup .popup-button:first-child:hover {
   background-color:#80808080;
 }
-.popup .popup_button:first-child:active {
+.popup .popup-button:first-child:active {
   background-color:#40414086;
 }
 
-.popup .popup_button:hover {
+.popup .popup-button:hover {
   border: none;
   width: 40px;
   height: 40px;
@@ -359,14 +359,14 @@ a:hover .text {
   background-color:#6beef3;
 }
 
-.popup .popup_button:active {
+.popup .popup-button:active {
   background-color: #52cafa;
   box-shadow: 0 1px #c0c0c0;
   transition: 0.1s;
   transform: translateY(3px);
 }
 
-.popup_button img {
+.popup-button img {
   width: 35px;
   justify-content: center;
   height: 35px;

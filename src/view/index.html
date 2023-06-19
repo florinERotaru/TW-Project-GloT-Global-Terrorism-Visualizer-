@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         <title>TerroristTracker</title>
         <link rel="stylesheet" href="/static/styles.css">
         <link rel="stylesheet" href="/static/statistics/filtered-search.css">
@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="/static/statistics/chart.css">
         <link rel="stylesheet" href="/static/homepage/home.css">
         <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
         <script src='https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js'></script>
 
@@ -32,7 +32,7 @@
             <nav class="nav-bar">
                 <ul>
                     <li>
-                        <a href="#home" class="active scrollable">Home</a>
+                        <a href="#home" class="active">Home</a>
                     </li>
                     <li>
                         <a href="#news" class="scrollable">News</a>
@@ -69,7 +69,7 @@
                     <!-- Full-width images with number and caption text -->
                     <div class="mySlides fade">
                         <div class="numbertext">1 / 3</div>
-                        <img class = "image" type="image/jpeg"  src="/static/images/img1.jpeg" style="width:100%" alt="..." loading="lazy">
+                        <img class = "image" src="/static/images/img1.jpeg" style="width:100%" alt="..." loading="lazy">
                         <a href="https://news.sky.com/story/man-arrested-in-germany-on-suspicion-of-procuring-cyanide-and-ricin-for-islamist-motivated-attack-12782428" target="_blank">
                             <div class="text">
                                 Man arrested in Germany on suspicion of procuring cyanide and ricin for 'Islamist-motivated' attack
@@ -78,7 +78,7 @@
                     </div>
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
-                        <img class = "image" type="image/jpeg" src="/static/images/img2.jpeg" style="width:100%" alt="..." loading="lazy">
+                        <img class = "image" src="/static/images/img2.jpeg" style="width:100%" alt="..." loading="lazy">
                         <a href="https://www.usnews.com/news/world/articles/2023-03-28/2-dead-in-portugal-stabbing-at-muslim-center" target="_blank">
                             <div class="text">
                                 Portugal: Refugee Held as Suspect in Muslim Center Stabbings
@@ -118,7 +118,7 @@
                         </div>
                         <label for="region">Select Region: </label>
                         <br>
-                        <select>
+                        <select id="region">
                             <option value="1">Select region: </option>
                             <option value="2">Central America</option>
                             <option value="3">Western Europe</option>
@@ -130,7 +130,7 @@
                         <br>
                         <label for="attack-type">Select Attack Type: </label>
                         <br>
-                        <select>
+                        <select id="attack-type">
                             <option value="1">Attack type: </option>
                             <option value="2">Assassination</option>
                             <option value="3">Hostage Taking</option>
@@ -141,7 +141,7 @@
                         <br>
                         <label for="main-target">Select Main Target: </label>
                         <br>
-                        <select>
+                        <select id="main-target">
                             <option value="1">Main target: </option>
                             <option value="2">Big Target</option>
                             <option value="3">Medium Target Taking</option>
@@ -150,8 +150,8 @@
                             <option value="6">Other Targets</option>
                         </select>
                         <br>
-                        <label for="main-target">Select Main Nationality: </label>
-                        <select>
+                        <label for="main-nationality">Select Main Nationality: </label>
+                        <select id="main-nationality">
                             <option value="1">Target nationality: </option>
                             <option value="2">Indian</option>
                             <option value="3">Chinese</option>
@@ -162,7 +162,7 @@
                         <br>
                         <label for="main-weapon">Select Main Weapon: </label>
                         <br>
-                        <select>
+                        <select id="main-weapon">
                             <option value="1">Main weapon: </option>
                             <option value="2">Watergun</option>
                             <option value="3">AK-47</option>
@@ -173,7 +173,7 @@
                         <br>
                         <label for="chart">Select-Chart: </label>
                         <br>
-                        <select>
+                        <select id="chart">
                             <option value="1">Chart Type: </option>
                             <option value="2">Pie Chart</option>
                             <option value="3">Bar Chart</option>
@@ -189,32 +189,32 @@
                     </div>
                 </div>
                 <button class="export-button-stats" onclick="openPopupStats()">Export</button>
-                    <div id="popup_stats" class="popup_stats" style="display: none;">
-                        <button class = "popup_button_stats" onclick="downloadChartAsCsv()">
-                            <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
+                    <div id="popup-stats" class="popup-stats" style="display: none;">
+                        <button class = "popup-button-stats" onclick="downloadChartAsCsv()">
+                            <img src="static/images/csv.png" alt="Icon 1" loading="lazy">
                         </button>
-                        <button class = "popup_button_stats" onclick="downloadChartAsPng()">
-                            <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
+                        <button class = "popup-button-stats" onclick="downloadChartAsPng()">
+                            <img src="static/images/png.png" alt="Icon 2" loading="lazy">
                         </button>
-                        <button class = "popup_button_stats" onclick="downloadChartAsSvg()">
-                            <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
+                        <button class = "popup-button-stats" onclick="downloadChartAsSvg()">
+                            <img src="static/images/svg.png" alt="Icon 3" loading="lazy">
                         </button>
                     </div>
             </div>
 
-            <div class="section map_bg" id="mapping">
+            <div class="section map-bg" id="mapping">
                 <div class="section-header">Map Visualizer</div>
                 <br>
                 <div class="horizontal-container">
                     <form class="form">
-                        <label for="interval">From:</label>
-                        <input type="date" id="interval" name="interval">
+                        <label for="interval-start">From:</label>
+                        <input type="date" id="interval-start" name="interval-start">
                         <br>
-                        <label for="interval">Until:</label>
-                        <input type="date" id="interval" name="interval">
+                        <label for="interval-end">Until:</label>
+                        <input type="date" id="interval-end" name="interval-end">
                         <br>
                         <label for="organization">Organization Name:</label>
-                        <select id="Organization" name="Organisation">
+                        <select id="organization" name="Organisation">
                             <option value="Black Panthers">Black Panthers</option>
                             <option value="ISIS">ISIS</option>
                             <option value="Al-Qaeeda">Al-Qaeeda</option>
@@ -227,14 +227,14 @@
                     <div id="map"></div>
                     <button class="export-button" onclick="openPopup()">Export</button>
                         <div id="popup" class="popup" style="display: none;">
-                            <button class = "popup_button" onclick="downloadMapAsCsv()">
-                                <img src="static/images/csv.png" alt="Icon 1" loading="lazy"/>
+                            <button class = "popup-button" onclick="downloadMapAsCsv()">
+                                <img src="static/images/csv.png" alt="Icon 1" loading="lazy">
                             </button>
-                            <button class = "popup_button" onclick="downloadMapAsPng()">
-                                <img src="static/images/png.png" alt="Icon 2" loading="lazy"/>
+                            <button class = "popup-button" onclick="downloadMapAsPng()">
+                                <img src="static/images/png.png" alt="Icon 2" loading="lazy">
                             </button>
-                            <button class = "popup_button" onclick="downloadMapAsSvg()">
-                                <img src="static/images/svg.png" alt="Icon 3" loading="lazy"/>
+                            <button class = "popup-button" onclick="downloadMapAsSvg()">
+                                <img src="static/images/svg.png" alt="Icon 3" loading="lazy">
                             </button>
                         </div>
                 </div>
@@ -272,7 +272,7 @@
         </script>
         <script>
             function openPopupStats() {
-                var popup = document.getElementById('popup_stats');
+                var popup = document.getElementById('popup-stats');
                 if (popup.style.display === 'none') {
                     popup.style.display = 'flex';
                     popup.style.justifyContent = 'center';
@@ -283,17 +283,15 @@
 
         <!--Script pentru fade scroll-->
         <script>
-            $(window).scroll(function() {
-          var scrollTop = $(this).scrollTop();
-
-          $('.home').css({
-            opacity: function() {
-              var elementHeight = $(this).height();
-              opacity = ((elementHeight - scrollTop) / elementHeight);
-              return opacity;
+            function updateBackgroundOpacity() {
+                const background = document.querySelector('.home');
+                const scrollPos = window.scrollY || window.pageYOffset;
+                const elementHeight = background.offsetHeight;
+                
+                const opacity = 1 - (scrollPos / elementHeight);
+                background.style.opacity = opacity;
             }
-          });
-        });
+            window.addEventListener('scroll', updateBackgroundOpacity);
         </script>
 
     </body>

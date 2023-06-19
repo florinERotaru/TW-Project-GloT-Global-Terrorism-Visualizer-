@@ -34,10 +34,8 @@
      color: #fff;
      float: right;
      padding: 10px;
-     border-radius-top-right: 5px;
      -moz-border-radius-top-right: 5px;
      -webkit-border-radius-top-right: 5px;
-     border-radius-bottom-right: 5px;
      -moz-border-radius-bottom-right: 5px;
      -webkit-border-radius-bottom-right: 5px;
            cursor:pointer;

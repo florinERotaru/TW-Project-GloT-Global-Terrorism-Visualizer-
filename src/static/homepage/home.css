@@ -11,8 +11,13 @@
   z-index: -1;
   overflow:hidden;
 }
+
+.home .fade {
+  opacity: 0.5; /* Set the desired opacity when scrolling */
+}
+
+
 .home-text {
-  text-align: border;
   position: relative;
 
   top: 36%;
@@ -34,7 +39,7 @@ p {
 font-size: 23px;
 }
 
-.map_bg {
+.map-bg {
   background-color: #cccccc8a;
   height: 970px;
   width: auto;
@@ -46,7 +51,6 @@ font-size: 23px;
   overflow:hidden;
 }
 .map-text {
-   text-align: border;
    position: relative;
    top: 50%;
    left: 50%;

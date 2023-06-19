@@ -1,11 +1,3 @@
-// $(document).ready(function() {
-//             $('.scrollable').click(function() {
-//               var id = $(this).attr('id');
-//               $('html, body').animate({
-//                 scrollTop: ($('#' + id + '.section').offset().top)
-//               }, 500);
-//             });})
-
 var map = L.map('map').setView([21, 78], 3);
 
 var myIcon = L.icon({
