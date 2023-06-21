@@ -255,6 +255,123 @@ a:hover .text {
   to {opacity: 1}
 }
 
+#map {
+  width: 80vw;
+  height: 70vh;
+}
+/* --   EXPORT BUTTONS   -- */
+#stat {
+  position: relative;
+}
+
+.export-button-stats {
+  position: absolute;
+  bottom: 4vh;
+  right: 6.4vw;
+  padding: 10px;
+}
+.popup-stats {
+  display: none;
+  position: absolute;
+  bottom: 9vh;
+  right: 5vw;
+  height: 40px;
+}
+.popup-stats .popup-button-stats {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 25%;
+  background-color:transparent;
+}
+.popup-stats .popup-button-stats:last-child:hover {
+  background-color:#8ef88a8a;
+}
+.popup-stats .popup-button-stats:last-child:active {
+  background-color:#32f52b;
+}
+.popup-stats .popup-button-stats:first-child:hover {
+  background-color:#80808080;
+}
+.popup-stats .popup-button-stats:first-child:active {
+  background-color:#40414086;
+}
+.popup-stats .popup-button-stats:hover {
+  border: none;
+  width: 40px;
+  height: 40px;
+  transition: 0.15s;
+  background-color:#6beef3;
+}
+.popup-stats .popup-button-stats:active {
+  background-color: #52cafa;
+  box-shadow: 0 1px #c0c0c0;
+  transform: translateY(3px);
+  transition: 0.1s;
+}
+.popup-button-stats img {
+  width: 35px;
+  justify-content: center;
+  height: 35px;
+}
+
+.export-button {
+  position: absolute;
+  bottom: 10vh;
+  right: 5.4vw;
+  padding: 10px;
+}
+
+.popup {
+  position: absolute;
+  bottom: 15vh;
+  right: 4vw;
+  height: 40px;
+}
+
+.popup .popup-button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 25%;
+  background-color:transparent;
+}
+
+.popup .popup-button:last-child:hover {
+  background-color:#8ef88a8a;
+}
+.popup .popup-button:last-child:active {
+  background-color:#32f52b;
+}
+
+.popup .popup-button:first-child:hover {
+  background-color:#80808080;
+}
+.popup .popup-button:first-child:active {
+  background-color:#40414086;
+}
+
+.popup .popup-button:hover {
+  border: none;
+  width: 40px;
+  height: 40px;
+  transition: 0.15s;
+  background-color:#6beef3;
+}
+
+.popup .popup-button:active {
+  background-color: #52cafa;
+  box-shadow: 0 1px #c0c0c0;
+  transition: 0.1s;
+  transform: translateY(3px);
+}
+
+.popup-button img {
+  width: 35px;
+  justify-content: center;
+  height: 35px;
+}
+/* --                      -- */
 @media only screen and (max-width: 1320px) {
   header{
     padding: 0 50px;
@@ -362,7 +479,6 @@ a:hover .text {
       width: 50%;
       position: relative;
       overflow: hidden;
-      z-index: -1;
       margin: auto;
       margin-top: 30px;
     }

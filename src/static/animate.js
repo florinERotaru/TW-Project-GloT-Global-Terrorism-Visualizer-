@@ -1,11 +1,3 @@
-$(document).ready(function() {
-            $('.scrollable').click(function() {
-              var id = $(this).attr('id');
-              $('html, body').animate({
-                scrollTop: ($('#' + id + '.section').offset().top)
-              }, 500);
-            });})
-
 var map = L.map('map').setView([21, 78], 3);
 
 var myIcon = L.icon({
@@ -13,7 +5,6 @@ var myIcon = L.icon({
   iconSize: [35, 32],
   iconAnchor: [25, 16]
 });
-
 
 const marker1 = L.marker([30, 80], {icon: myIcon}).addTo(map);
 const marker2 = L.marker([36, 50], {icon: myIcon}).addTo(map);
@@ -30,7 +21,6 @@ L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext
     maxZoom: 20,
     ext: 'png'
 }).addTo(map);
-
 
 let slideIndex = 1;
 showSlides(slideIndex);
