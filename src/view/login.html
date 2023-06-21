@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <h1>Sign Up</h1>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="/static/login.css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
 
-    <form action="/login" method="POST">
-      <input type="hidden" id="formType" name="formType" value="signup" />
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Sign up</button>
+				</form>
+			</div>
 
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-
-      <input type="submit" value="Sign Up" />
-    </form>
-
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-      <input type="hidden" name="formType" value="signin" />
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-
-      <input type="submit" value="Sign In" />
-    </form>
-  </body>
+			<div class="login">
+				<form action="/login" method="POST">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+</body>
 </html>

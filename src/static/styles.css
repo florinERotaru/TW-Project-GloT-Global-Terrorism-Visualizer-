@@ -16,7 +16,7 @@ html {
 
 body {
     background: #FFFFF7;
-    font-family: 'Open Sans', 'sans-serif';
+    font-family: 'Lucida Console', 'sans-serif';
     margin: 0;
     padding: 0;
     height: 100%;
@@ -503,7 +503,7 @@ a:hover .text {
       display: none;
       position: fixed; /* Fixed/sticky position */
       bottom: 50px; /* Place the button at the bottom of the page */
-      right: 25px;
+      left: 25px;
       z-index: 99; /* Make sure it does not overlap */
       outline: none; /* Remove outline */
       background-color: transparent; /* Set a background color */

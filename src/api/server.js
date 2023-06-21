@@ -1,12 +1,16 @@
+
+let session = require('./sessionManager');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
 const server = http.createServer((req, res) => {
+  
   /*  <<-- HOMEPAGE LOADING -->> */
   if (req.url === '/') {
-    const loadHome = new Promise((resolve, reject) => {
-      const filePath = path.join(process.cwd(), '../view/index.html');
+    const loadLogin = new Promise((resolve, reject) => {
+      session(req, res);
+      const filePath = path.join(process.cwd(), '../view/login.html');
       fs.readFile(filePath, 'utf8', (err, content) => {
         if (err) {
           res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -55,9 +59,43 @@ const server = http.createServer((req, res) => {
     });
     })
    }
-   else {
-      console.log("SOMETHING ELSE!!");
-   }
+   else if(req.url === '/login' && req.method === "POST") {
+    const loadHome = new Promise((resolve, reject) => {
+      session(req, res);
+      const filePath = path.join(process.cwd(), '../view/index.html');
+      fs.readFile(filePath, 'utf8', (err, content) => {
+        if (err) {
+          res.writeHead(500, { 'Content-Type': 'text/plain' });
+          res.end('Internal Server Error');
+          reject();
+        }
+
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content);
+
+        resolve();
+      });
+
+   });
+  }
+  else if (req.url === '/login.html') {
+    const loadLogin = new Promise((resolve, reject) => {
+      session(req, res);
+      const filePath = path.join(process.cwd(), '../view/login.html');
+      fs.readFile(filePath, 'utf8', (err, content) => {
+        if (err) {
+          res.writeHead(500, { 'Content-Type': 'text/plain' });
+          res.end('Internal Server Error');
+          reject();
+        }
+
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content);
+
+        resolve();
+      });
+    });
+  }
 });
 
 const port = 3000;

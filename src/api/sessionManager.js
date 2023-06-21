@@ -1,10 +1,8 @@
 const { v4: uuidv4 } = require("uuid");
-const WebSocket = require("ws");
 const url = require("url");
 const path = require("path");
 const querystring = require("querystring");
 const fs = require("fs");
-const socketIO = require("socket.io");
 
 // Store the session data
 let { sessions } = require("./authentication");
@@ -31,13 +29,13 @@ const handleSession = (req, res) => {
       console.log("ESTI LOGAT: ", isLoggedIn);
 
       // Set up WebSocket server
-      const wss = new WebSocket.Server({ port: 3001 });
-      // Handle WebSocket connections
-      wss.on("connection", function (socket) {
-        // Send a message to the client to trigger generation
-        socket.send("generate");
-        wss.close();
-      });
+      // const wss = new WebSocket.Server({ port: 3001 });
+      // // Handle WebSocket connections
+      // wss.on("connection", function (socket) {
+      //   // Send a message to the client to trigger generation
+      //   socket.send("generate");
+      //   wss.close();
+      // });
 
     } else {
       isLoggedIn = false;
