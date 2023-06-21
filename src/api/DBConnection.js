@@ -6,7 +6,7 @@ class TerroDBConnection {
     port: 5432,
     database: 'webdb',
     user: 'postgres',
-    password: '1234',
+    password: 'sys',
     max: 20, // Maximum number of connections in the pool
     idleTimeoutMillis: 30000, // Time in milliseconds a connection can remain idle before being closed
     connectionTimeoutMillis: 2000, // Time in milliseconds to wait for a new connection before timing out
