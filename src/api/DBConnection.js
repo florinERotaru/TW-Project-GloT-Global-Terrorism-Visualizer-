@@ -53,11 +53,12 @@ class TerroDBConnection {
 
 module.exports = TerroDBConnection;
 
+// exemplu
 
-TerroDBConnection.query('select * from regions')
-.then( (rows) => {
-    console.log(rows);
-})
-.catch ((error) => {
-    console.log(error);
-});
+// TerroDBConnection.query('select * from regions')
+// .then( (rows) => {
+//     console.log(rows);
+// })
+// .catch ((error) => {
+//     console.log(error);
+// });
