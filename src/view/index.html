@@ -35,16 +35,16 @@
                         <a href="#home" class="active">Home</a>
                     </li>
                     <li>
-                        <a href="#news" class="scrollable">News</a>
+                        <a href="#news">News</a>
                     </li>
                     <li>
-                        <a href="#stat" class="scrollable">Statistics</a>
+                        <a href="#stat">Statistics</a>
                     </li>
                     <li>
-                        <a href="#mapping" class="scrollable">Map</a>
+                        <a href="#mapping">Map</a>
                     </li>
                     <li>
-                        <a href="/login.html" id="login" class="scrollable">Log-out</a>
+                        <a href="/login.html">Log-out</a>
                     </li>
                 </ul>
             </nav>
@@ -112,64 +112,39 @@
                 <br>
                 <div class="horizontal-container">
                     <form class="form" id="formId">
-                        <div class="bars">
-                            <input type="text" placeholder="Search here...">
-                            <input type="submit" value="Submit">
-                        </div>
                         <label for="region">Select Region: </label>
                         <br>
                         <select id="region">
-                            <option value="1">Select region: </option>
-                            <option value="2">Central America</option>
-                            <option value="3">Western Europe</option>
-                            <option value="4">East Asia</option>
-                            <option value="5">Middle East & North Africa</option>
-                            <option value="6">Southeast Asia</option>
-                            <option value="7">North America</option>
-                        </select>
+                            <option value="1">Select region:</option>
+                            {{regionsOptions}}
+                          </select>
                         <br>
                         <label for="attack-type">Select Attack Type: </label>
                         <br>
                         <select id="attack-type">
-                            <option value="1">Attack type: </option>
-                            <option value="2">Assassination</option>
-                            <option value="3">Hostage Taking</option>
-                            <option value="4">Bombing</option>
-                            <option value="5">Armed Assault</option>
-                            <option value="6">Other Crime Type</option>
-                        </select>
+                            <option value="1">Select attack type:</option>
+                            {{weaponTypesOptions}}
+                          </select>
                         <br>
                         <label for="main-target">Select Main Target: </label>
                         <br>
                         <select id="main-target">
-                            <option value="1">Main target: </option>
-                            <option value="2">Big Target</option>
-                            <option value="3">Medium Target Taking</option>
-                            <option value="4">Small Target</option>
-                            <option value="5">Dangerous Target</option>
-                            <option value="6">Other Targets</option>
-                        </select>
+                            <option value="1">Select target:</option>
+                            {{targetsOptions}}
+                          </select>
                         <br>
                         <label for="main-nationality">Select Main Nationality: </label>
                         <select id="main-nationality">
-                            <option value="1">Target nationality: </option>
-                            <option value="2">Indian</option>
-                            <option value="3">Chinese</option>
-                            <option value="4">American</option>
-                            <option value="5">French</option>
-                            <option value="6">Russian</option>
-                        </select>
+                            <option value="1">Target nationality:</option>
+                            {{nationalitiesOptions}}
+                          </select>
                         <br>
                         <label for="main-weapon">Select Main Weapon: </label>
                         <br>
-                        <select id="main-weapon">
-                            <option value="1">Main weapon: </option>
-                            <option value="2">Watergun</option>
-                            <option value="3">AK-47</option>
-                            <option value="4">Glass bottle</option>
-                            <option value="5">Fists</option>
-                            <option value="6">Hands</option>
-                        </select>
+                        <select id="main-weapon" name="main-weapon">
+                            <option value="1">Select main weapon:</option>
+                            {{weaponsOptions}}
+                          </select>
                         <br>
                         <label for="chart">Select-Chart: </label>
                         <br>
@@ -215,11 +190,6 @@
                         <br>
                         <label for="organization">Organization Name:</label>
                         <select id="Organization" name="Organization">
-                            <option value="Black Panthers">Black Panthers</option>
-                            <option value="ISIS">ISIS</option>
-                            <option value="Al-Qaeeda">Al-Qaeeda</option>
-                            <option value="Irish Republican Army">Irish Republican Army</option>
-                            <option value="Unknown">Unknown</option>
                         </select>
                         <br>
                         <input type="submit" value="Analyze">
@@ -235,7 +205,23 @@
                             </button>
                         </div>
                 </div>
+             </div>
+             <div class="horizontal-container map-bg">
+                <div class = "vertical-container" id="marker-details" style="display: none;"></div>
+                <div id="map-chart"></div>
             </div>
+            <!-- ! Div-ul asta va fi livrat de server la momentul incarcarii paginii, daca user-ul e admin !-->
+            <div class=section id = "admin">
+                <script src="/static/admin.js"></script>
+                <div class="section-header"> Administration </div>
+                <div class="horizontal-container-admin">
+                    <button class="get-users" onclick="fetchUsers()">Get users</button>
+                    <button class="get-sessions" onclick="fetchSessions()">Get sessions</button>
+                    <button class="add-user" onclick="addUser()">Add user</button> <!-- asta ar trebui sa deschida un formular, iar butonul formularului sa apeleze functia-->
+                </div>
+            </div>
+            <!-- ! ------ ------  -------  -------  -------  -------  -------  -------  -------  ------- -- !-->
+
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top">
             <span>&#8686;</span>
@@ -246,6 +232,8 @@
         <script src="/static/animate.js"> </script>
         <script src="/static/route.js"></script>
         <script src="/static/export.js"></script>
+        <script src="/static/fetchFilters.js"></script>
+        <script src="/static/mapChart.js"></script>
 
         <!-- Script pentru nav-bar cand max-width = 900px -->
         <script>
@@ -266,6 +254,7 @@
                 else popup.style.display = "none";
             }
         </script>
+
         <script>
             function openPopupStats() {
                 var popup = document.getElementById('popup-stats');

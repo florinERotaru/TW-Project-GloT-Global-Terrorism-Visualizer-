@@ -374,3 +374,8 @@ CREATE TABLE IF NOT EXISTS users (
         password VARCHAR(255),
         role INTEGER
       );
+
+CREATE TABLE IF NOT EXISTS sessions (
+    cookieId VARCHAR(127) PRIMARY KEY,
+    email VARCHAR(255) UNIQUE
+);
