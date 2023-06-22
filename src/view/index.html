@@ -233,9 +233,6 @@
                             <button class = "popup-button" onclick="downloadMapAsPng()">
                                 <img src="static/images/png.png" alt="Icon 2" loading="lazy">
                             </button>
-                            <button class = "popup-button" onclick="downloadMapAsSvg()">
-                                <img src="static/images/svg.png" alt="Icon 3" loading="lazy">
-                            </button>
                         </div>
                 </div>
             </div>
@@ -265,7 +262,6 @@
                 var popup = document.getElementById('popup');
                 if (popup.style.display === "none") {
                     popup.style.display = "flex";
-                    popup.style.justifyContent = "center";
                 }
                 else popup.style.display = "none";
             }
@@ -275,7 +271,6 @@
                 var popup = document.getElementById('popup-stats');
                 if (popup.style.display === 'none') {
                     popup.style.display = 'flex';
-                    popup.style.justifyContent = 'center';
                 }
                 else popup.style.display = 'none';
             }

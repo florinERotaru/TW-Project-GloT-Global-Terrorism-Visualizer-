@@ -3,7 +3,14 @@ let session = require('./sessionManager');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 const TerrorDBConnection = require('./DBConnection.js');
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
 
 const server = http.createServer((req, res) => {
   
@@ -90,7 +97,52 @@ const server = http.createServer((req, res) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('An error occurred.');
       });
-  } 
+  }
+  /* <<-- NEWS -->> */
+  /* Alternativa: Bing news, 1000 requests/month . Acum e 100/zi si un request/secunda. 
+  Tranzitia la alt api e usoara, doar de schimbat get-ul si accesarea obiectului returnat. */
+  else if(req.url.startsWith("/api/news")) {
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        url: 'https://real-time-news-data.p.rapidapi.com/search',
+        params: {
+          query: 'Terrorism',
+          lang: 'en'
+        },
+        headers: {
+          'X-RapidAPI-Key': '586835d4c1msh01957fc912c357bp163e5djsne9dcb886b679',
+          'X-RapidAPI-Host': 'real-time-news-data.p.rapidapi.com'
+        }
+      };
+
+      try {
+        // console.log("Waiting for the API response...");
+        const response = await axios.request(options);
+        // console.log("Got the API response!");
+        return response.data;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    };
+    fetchData()
+      .then(newsArr => {
+        const response = [];
+
+        const data = newsArr.data;
+        // 3 stiri random din cele returnate
+        response.push(data[getRandomInt(1, data.length / 6)]);
+        response.push(data[getRandomInt(data.length / 6 + 1, data.length / 3)]);
+        response.push(data[getRandomInt(data.length / 3 + 1, data.length)]);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(response));
+      })
+      .catch(error => {
+        console.error("API request failed:", error);
+      });
+  }
   /*  <<-- STATIC LOADING -->> */
   else if(req.url.includes('static')) {
     const loadStatic = new Promise((resolve, reject) => {
