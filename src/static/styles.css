@@ -106,13 +106,17 @@ a {
   color: white;
   overflow: hidden;
 }
+
+#header-admin {
+  margin-top: 10%;
+}
 .form {
   margin-left: 7%;
   margin-right: 14%;
   font-size: 20px;
 }
 .form label:first-child{
-  margin-top: 30%;
+  margin-top: 10%;
   display: block;
   margin-bottom: 0px;
 }
@@ -310,9 +314,9 @@ a:hover .text {
   transition: 0.1s;
 }
 .popup-button-stats img {
-  width: 35px;
+  width: auto;
   justify-content: center;
-  height: 35px;
+  height: 3.62vh;
 }
 
 .export-button {
@@ -360,9 +364,9 @@ a:hover .text {
 }
 
 .popup-button img {
-  width: 35px;
+  width: auto;
   justify-content: center;
-  height: 35px;
+  height: 3.62vh;
 }
 /* --                      -- */
 
@@ -371,6 +375,16 @@ a:hover .text {
   background-color: rgba(255, 50, 50, 0.6);
   opacity: 1;
   border: 0;
+}
+
+.horizontal-container-admin {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-around;
+}
+.horizontal-container-admin > button {
+  width: 7vw;
+  height: 5.18vh;
 }
 
 @media only screen and (max-width: 1320px) {

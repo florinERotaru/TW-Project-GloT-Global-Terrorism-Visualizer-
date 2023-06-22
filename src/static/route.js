@@ -24,7 +24,7 @@ function handleURLChange() {
         if (divTop <= viewportBottom - (div.offsetHeight * 0.5) && divBottom >= viewportTop + (div.offsetHeight * 0.5)) {
             const id = div.getAttribute('id');
             // Modify the URL using the History API
-            history.pushState({}, '', `/#${id}`); // Use the div's id in the URL
+            history.pushState({}, '', `/app/${id}`); // Use the div's id in the URL
         }
     });
 }

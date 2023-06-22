@@ -15,7 +15,7 @@ class TerroDBConnection {
   static async connect() {
     try {
       const client = await this.pool.connect();
-      console.log('Connected to the database');
+      // console.log('Connected to the database');
       return client;
     } catch (error) {
       console.error('Error connecting to the database:', error);
@@ -26,7 +26,7 @@ class TerroDBConnection {
   static async disconnect(client) {
     try {
       await client.release();
-      console.log('Released client back to the pool');
+      // console.log('Released client back to the pool');
     } catch (error) {
       console.error('Error disconnecting from the database:', error);
       throw error;

@@ -1,6 +1,6 @@
 const TerroDBConnection = require('./DBConnection.js');
 
-function queryRegions() {
+async function queryRegions() {
   return TerroDBConnection.query('select region from regions')
     .then((rows) => {
       return rows;
@@ -11,7 +11,7 @@ function queryRegions() {
     });
 }
 
-function queryCities() {
+async function queryCities() {
   return TerroDBConnection.query('select distinct city from attacks')
     .then((rows) => {
       return rows;
@@ -22,7 +22,7 @@ function queryCities() {
     });
 }
 
-function queryOrganizations() {
+async function queryOrganizations() {
   return TerroDBConnection.query('select * from organizations')
     .then((rows) => {
       return rows;
@@ -33,7 +33,7 @@ function queryOrganizations() {
     });
 }
 
-function queryNationalities() {
+async function queryNationalities() {
   return TerroDBConnection.query('select country from countries')
     .then((rows) => {
       return rows;
@@ -44,7 +44,7 @@ function queryNationalities() {
     });
 }
 
-function queryWeaponTypes() {
+async function queryWeaponTypes() {
   return TerroDBConnection.query('select weapon_type from weapon_types')
     .then((rows) => {
       return rows;
@@ -55,8 +55,18 @@ function queryWeaponTypes() {
     });
 }
 
-function queryTargets() {
+async function queryTargets() {
   return TerroDBConnection.query('select targtype from targtypes')
+    .then((rows) => {
+      return rows;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw error;
+    });
+}
+async function queryWeapon() {
+  return TerroDBConnection.query("select weapon from weapons")
     .then((rows) => {
       return rows;
     })
@@ -72,5 +82,6 @@ module.exports = {
   queryOrganizations,
   queryNationalities,
   queryWeaponTypes,
-  queryTargets
+  queryTargets,
+  queryWeapon
 };
