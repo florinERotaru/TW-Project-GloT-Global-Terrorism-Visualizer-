@@ -54,8 +54,9 @@ document.getElementById('mapForm').addEventListener('submit', function(event) {
                                     <strong>Organization:</strong> ${item.organization}
                                     <br>
                                     ${item.attacktype} against ${item.targtype}
-                                    </div>`;
-
+                                    </div>
+                                    <div style="display: none;">${item.country},${item.city},${item.date},${item.organization},${item.attacktype},${item.targtype},${item.summary.replaceAll(',', '')},${item.motive}</div>`;
+                                    // asta e nevoie pentru export ca .csv, nu stiu cum se pot lua altfel datele fara alt fetch //
             marker.bindTooltip(tooltipContent, {
               className: 'custom-tooltip'
             });

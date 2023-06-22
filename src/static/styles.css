@@ -325,7 +325,7 @@ a:hover .text {
 .popup {
   position: absolute;
   bottom: 15vh;
-  right: 4vw;
+  right: 5.2vw;
   height: 40px;
 }
 
@@ -335,13 +335,6 @@ a:hover .text {
   height: 40px;
   border-radius: 25%;
   background-color:transparent;
-}
-
-.popup .popup-button:last-child:hover {
-  background-color:#8ef88a8a;
-}
-.popup .popup-button:last-child:active {
-  background-color:#32f52b;
 }
 
 .popup .popup-button:first-child:hover {
