@@ -4,8 +4,24 @@ const TerrorDBConnection = require('../DBConnection');
 const querystring = require("querystring");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
+const fs = require('fs');
+const path = require('path');
 
 class LoginEndpoint extends Endpoint {
+    async get(_, res) {
+        console.log("login GET");
+        const filePath = path.join(process.cwd(), '../view/login.html');
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.readFile(filePath, 'utf8', (err, content) => {
+              if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Internal Server Error');
+              }
+      
+              res.writeHead(200, { 'Content-Type': 'text/html' });
+              res.end(content);
+            });
+    }
     async post(req, res) {
         let body = "";
         req.on("data", (chunk) => {
@@ -13,7 +29,6 @@ class LoginEndpoint extends Endpoint {
         });
 
         req.on("end", async () => {
-            console.log("Am dat POST in login");
             let formData = querystring.parse(body);
             let formType = formData.formType;
             console.log("FormType: ", formData);
@@ -21,82 +36,78 @@ class LoginEndpoint extends Endpoint {
             if (formType === "signup") {
                 console.log("Sign up!");
 
-                // Access the submitted values
-                const username = formData.username;
+                const username = formData.txt;
                 const email = formData.email;
-                const password = formData.password;
-                const hashedPassword = bcrypt.hash(password, 10);
-                // Perform signup logic here
-                try {
-                await TerrorDBConnection.query(
-                    "INSERT INTO users (username, email, password, role) VALUES ($1, $2, $3, 0)",
-                    [username, email, hashedPassword]
-                );
-                res.end("Inserted user");
-                } 
-                catch (error) {
-                    console.error("Error inserting a new user");
+                const password = formData.pswd;
+                if (email === 'admin@GloTv.glot') {
+                    res.setHeader("Location", "/login");
+                    res.statusCode = 302;
+                    res.end();
+                } else {
+                    const hashedPassword = await bcrypt.hash(password, 10);
+                    try {
+                    await TerrorDBConnection.query(
+                        "INSERT INTO users (username, email, password, role) VALUES ($1, $2, $3, $4)",
+                        [username, email, hashedPassword, 1]
+                    );
+                    } 
+                    catch (error) {
+                        console.error("Error inserting a new user");
+                    }
+                    res.setHeader("Location", "/login");
+                    res.statusCode = 302;
+                    res.end();
                 }
-                // Send a response back to the client
-                res.setHeader("Location", "/login");
-                res.writeHead(200, { "Content-Type": "text/plain" });
-                res.end("Sign-up successful");
 
             } else if (formType === "signin") {
-                console.log("sign in!!!");
-                // Parse the form data
-                // Access the submitted values
+                console.log("Sign in!");
                 const email = formData.email;
-                const password = formData.password;
-
-                //Search in the db
+                const password = formData.pswd;
                 try {
-                const result = await TerrorDBConnection.query(
+                await TerrorDBConnection.query(
                     "SELECT password FROM users WHERE email = $1",
-                    [formData.email]
-                );
-                if (result.rows.length === 0) {
-                    res.statusCode = 404;
-                    //res.setHeader("Content-Type", "text/plain");
-                    res.write("Email/Password incorrect!");
-                } else {
-                    const hashedPassword = result.rows[0].password;
-                    const passwordMatch = bcrypt.compare(
-                    formData.password,
-                    hashedPassword
-                    );
-                    //res.setHeader("Content-Type", "text/plain");
-                    if (passwordMatch) {
-                        res.statusCode = 200;
-                        //Generate unique uuid session
-                        const sessionId = uuidv4();
-                        //Store session ID in a cookie on the client side
-                        res.setHeader("Set-Cookie", `sessionId=${sessionId}; HttpOnly`);
-                        //Login successful --> redirect catre home
-                        res.setHeader("Location", "/app/home");
-                        //res.writeHead(200, { "Content-Type": "text/plain" });
-                        res.end();
-                        try {
-                            await TerrorDBConnection.query(
-                            "INSERT INTO sessions (cookieId, email) VALUES ($1, $2)",
-                            [sessionId, email]
-                            );
-                            console.log("Inserted session");
-                        } catch (error) {
-                            console.error("Error inserting a new session");
-                        }
+                    [email])
+                    .then(async (rows) => {
+                        if (rows.length === 0) {
+                            res.setHeader("Location", "/login");
+                            res.statusCode = 302;
+                            res.end();
                         } else {
-                        //res.setHeader("Content-Type", "text/plain");
-                        res.statusCode = 404;
-                        res.write("Email/Password incorrect!");
-                    }
-                }
+                            const hashedPassword = rows[0].password;
+                            const passwordMatch = bcrypt.compare(
+                            password,
+                            hashedPassword
+                            );
+                            if (passwordMatch) {
+                                res.statusCode = 200;
+                                const sessionId = uuidv4();
+        
+                                res.setHeader("Set-Cookie", `sessionId=${sessionId}; HttpOnly`);
+                                res.setHeader('Location', '/app/home');
+                                res.statusCode = 302;
+                                res.end();
+                                try {
+                                    await TerrorDBConnection.query(
+                                    "INSERT INTO sessions (cookieId, email) VALUES ($1, $2)",
+                                    [sessionId, email]
+                                    );
+                                    console.log("Inserted session");
+                                } catch (error) {
+                                    console.error("Error inserting a new session");
+                                }
+                            } else {
+                                    res.setHeader("Location", "/login");
+                                    res.statusCode = 302;
+                                    res.end();
+                                }
+                        }
+                    });
                 } catch (error) {
                     console.error("Error logging user: ", error);
                     res.statusCode = 500;
                     res.write("Error logging user");
+                    res.end();
                 }
-                res.end();
             }
         });
     }

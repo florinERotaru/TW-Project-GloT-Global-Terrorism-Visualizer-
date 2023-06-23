@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="/static/login.css">
@@ -11,22 +11,22 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form action="/login" method="post">
 					<input type="hidden" name="formType" value="signup">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="text" name="txt" placeholder="User name" required="true">
+					<input type="email" name="email" placeholder="Email" required="true">
+					<input type="password" name="pswd" placeholder="Password" required="true">
 					<button>Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form action="/login" method="POST">
+				<form action="/login" method="post">
 					<input type="hidden" name="formType" value="signin">
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="email" name="email" placeholder="Email" required="true">
+					<input type="password" name="pswd" placeholder="Password" required="true">
 					<button>Login</button>
 				</form>
 			</div>
