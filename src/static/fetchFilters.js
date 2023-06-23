@@ -120,8 +120,7 @@ function createScatterChart(items) {
   // Set chart options
   const options = {
     title:
-      "Number of Attacks Per Year, organization: " +
-      document.getElementById("Organization").value,
+      "Number of Attacks Per Year",
     width: 800,
     height: 800,
     colors: ["black"],

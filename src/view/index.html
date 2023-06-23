@@ -69,7 +69,7 @@
                     <!-- Full-width images with number and caption text -->
                     <div class="mySlides fade">
                         <a style="cursor: pointer;" id="open-news-text" target="_blank">
-                        <img class = "news-image fade" src="" style="width:100%" alt="No image found..."></a>
+                        <img class = "news-image fade" src="/" style="width:100%" alt="No image found..."></a>
                         <a href="" target="_blank" id="news-anchor">
                             <div class="text"></div>
                         </a>
@@ -82,48 +82,48 @@
 
             <div class="section" id="stat">
                 <div class="section-header">Statistics</div>
-                <br />
+                <br>
                 <div class="horizontal-container">
                     <form class="form" id="formId" action="/api/stat" method="GET">
                         <label for="region">Select Region: </label>
-                        <br />
+                        <br>
                         <select id="region" name="region">
                         <option value="1">Select region:</option>
                         {{regionsOptions}}
                         <option value="-1">Any</option>
                         </select>
-                        <br />
+                        <br>
                         <label for="attack-type">Select Attack Type: </label>
-                        <br />
+                        <br>
                         <select id="attack-type" name="attack-type">
                         <option value="1">Select attack type:</option>
                         {{attackTypesOption}}
                         <option value="-1">Any</option>
                         </select>
-                        <br />
+                        <br>
                         <label for="main-target">Select Main Target: </label>
-                        <br />
+                        <br>
                         <select id="main-target" name="main-target">
                         <option value="1">Select target:</option>
                         {{targetsOptions}}
                         <option value="-1">Any</option>
                         </select>
-                        <br />
+                        <br>
                         <label for="main-nationality">Select Main Nationality: </label>
                         <select id="main-nationality" name="main-nationality">
                         <option value="1">Target nationality:</option>
                         {{nationalitiesOptions}}
                         <option value="-1">Any</option>
                         </select>
-                        <br />
+                        <br>
                         <label for="main-weapon">Select Main Weapon: </label>
-                        <br />
+                        <br>
                         <select id="main-weapon" name="main-weapon">
                         <option value="1">Select main weapon:</option>
                         {{weaponTypesOptions}}
                         <option value="-1">Any</option>
                         </select>
-                        <br />
+                        <br>
                         <label for="chart">Select Chart Type: </label>
                         <select id="chart">
                         <option value="0">Chart Type:</option>
@@ -131,8 +131,8 @@
                         <option value="2">Material Damages Chart</option>
                         <option value="3">Deaths by Year Chart</option>
                         </select>
-                        <br />
-                        <input type="submit" value="Analyze" id="generate-chart" />
+                        <br>
+                        <input type="submit" value="Analyze" id="generate-chart">
                     </form>
                     <div class="chart">
                         <div id="anyChart"></div>
@@ -157,13 +157,13 @@
                 <br>
                 <div class="horizontal-container">
                     <form id = "mapForm" action="/api/map" class="form" method = "GET">
-                        <label for="interval">From:</label>
+                        <label for="from">From:</label>
                         <input type="date" id="from" name="interval">
                         <br>
-                        <label for="interval">Until:</label>
+                        <label for="until">Until:</label>
                         <input type="date" id="until" name="interval">
                         <br>
-                        <label for="organization">Organization Name:</label>
+                        <label for="Organization">Organization Name:</label>
                         <select id="Organization" name="Organization">
                         </select>
                         <br>
