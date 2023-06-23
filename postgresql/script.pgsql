@@ -375,7 +375,12 @@ CREATE TABLE IF NOT EXISTS users (
         role INTEGER
       );
 
+DROP TABLE sessions;
+
 CREATE TABLE IF NOT EXISTS sessions (
-    cookieId VARCHAR(127) PRIMARY KEY,
-    email VARCHAR(255) UNIQUE
+    cookieId UUID PRIMARY KEY,
+    email VARCHAR(255)
 );
+
+
+

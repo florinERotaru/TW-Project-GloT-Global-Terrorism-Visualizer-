@@ -1,66 +1,52 @@
 const fs = require('fs');
 const path = require('path');
 const { Endpoint } = require('./endpoint');
-const TerrorDBConnection = require('../DBConnection');
-
-let sessions = [];
+const sessionsManager = require('../sessionManager');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 class HomeEndpoint extends Endpoint {
   constructor(){super();};
-
-  async handleSession(req) {
-    let isLoggedIn = false;
-    sessions = await TerrorDBConnection.query('SELECT * FROM sessions;')
-    .then((rows) => {
-      return rows;
-    });
-    console.log(sessions);
-
-    const cookies = req.headers.cookie ? req.headers.cookie.split(";") : [];
-    const sessionIdCookie = cookies.find((cookie) =>
-      cookie.trim().startsWith("sessionId=")
-    );
-    if (sessionIdCookie) {
-      const sessionId = sessionIdCookie.split("=")[1].trim();
-      
-      // Check if the session ID exists and retrieve the session data
-      const sessionData = sessions[sessionId];
-      console.log("sessions isEmpty: ", sessions);
-      if (sessionData) {
-        isLoggedIn = true;
-        console.log("ESTI LOGAT: ", isLoggedIn);
-      } else {
-        isLoggedIn = false;
-        console.log("NU ESTI LOGAT: ", isLoggedIn);
-      }
-    } else {
-      console.log("NU AM GASIT COOKIE: ", isLoggedIn);
-    }
-    return isLoggedIn;
-    //---------------------------
-  };
-
+  
   async get(req, res) {
-    let filePath = '';
-    let flag = await this.handleSession(req);
-    if (flag == false) {
+    let flag = [];
+    flag = await sessionsManager(req);
+    // flag[0] -> login status, flag[1] -> admin status
+    if (flag[0] == false) {
       console.log("FALS");
-       filePath = path.join(process.cwd(), '../view/login.html');
+      res.setHeader("Location", "/login");
+      res.statusCode = 302;
+      res.end();
     }
     else {
       console.log("TRUE");
-      filePath = path.join(process.cwd(), '../view/index.html');
-    }
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    fs.readFile(filePath, 'utf8', (err, content) => {
+      const filePath = path.join(process.cwd(), '../view/index.html');
+      
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      fs.readFile(filePath, 'utf8', (err, content) => {
               if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
                 res.end('Internal Server Error');
               }
-      
+              if (flag[1] == true) {
+
+                const dom = new JSDOM(content);
+                // append administration section
+                const targetSection = dom.window.document.getElementById('main-nav-bar');
+                let ulElement = targetSection.querySelector('ul');
+                
+                let ulCompleted = `<li><button onclick="openAdminTab()">Administration</button></li><script src="../static/admin.js"></script>`;
+                ulCompleted += ulElement.innerHTML;
+
+                ulElement.innerHTML = ulCompleted;
+                content = '';
+                content += "<!DOCTYPE html>"; content += dom.window.document.getElementsByTagName('html')[0].outerHTML;
+              }
+              
               res.writeHead(200, { 'Content-Type': 'text/html' });
               res.end(content);
             });
+      }
   }
 };
 module.exports = {HomeEndpoint};

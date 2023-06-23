@@ -1,8 +1,3 @@
-// import { promises as fsAsync } from "fs";
-// import { join, extname } from 'path';
-
-// import { Endpoint } from './endpoint.js'
-
 const {Endpoint} = require('./endpoint.js');
 const fs = require('fs');
 const path = require('path');

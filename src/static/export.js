@@ -1,6 +1,5 @@
 function downloadChartAsSvg() { 
-    // asta e pentru pie-chartul ala mock, dar cand o sa fie un singur chart se va schimba doar valoarea asta
-    const chartDiv = document.getElementById('myPieChart');
+    const chartDiv = document.getElementById('anyChart');
 
     let chartSVG = chartDiv.getElementsByTagName('svg')[0].outerHTML;
     chartSVG = chartSVG.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink" ');
@@ -18,7 +17,7 @@ function downloadChartAsSvg() {
 function downloadChartAsPng() {
     const link = document.createElement('a');
     link.href = imageURI;
-    link.download = 'piechart.png';
+    link.download = 'anyChart.png';
     link.click();
     URL.revokeObjectURL(link);
 }
@@ -31,16 +30,16 @@ function downloadChartAsCsv() {
     const fileName = 'data.csv';
     // build column headings
     csvColumns = '';
-    for (var i = 0; i < dataPie.getNumberOfColumns(); i++) {
-      csvColumns += dataPie.getColumnLabel(i);
-      if (i < (dataPie.getNumberOfColumns() - 1)) {
+    for (var i = 0; i < dataTable.getNumberOfColumns(); i++) {
+      csvColumns += dataTable.getColumnLabel(i);
+      if (i < (dataTable.getNumberOfColumns() - 1)) {
         csvColumns += ',';
       }
     }
     csvColumns += '\n';
 
     // build data rows
-    csvContent = csvColumns + google.visualization.dataTableToCsv(dataPie);
+    csvContent = csvColumns + google.visualization.dataTableToCsv(dataTable);
 
     // export data
     downloadLink = document.createElement('a');

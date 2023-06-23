@@ -7,15 +7,16 @@ const {NewsEndpoint} = require('./endpoints/news-endpoint');
 const {AdminEndpoint} = require('./endpoints/admin-endpoint');
 const {StatEndpoint} = require('./endpoints/statistic-endpoint');
 const { LoginEndpoint } = require('./endpoints/login-endpoint');
+const {LogoutEndpoint} = require('./endpoints/logout-endpoint');
 const http = require('http');
 
 const ENDPOINTS = {
   "\/app\/static/.*": new StaticEndpoint(),
   "\/static/.*": new StaticEndpoint(),
   "\/app\/.*": new HomeEndpoint(),
-  "\/api/stat" : new StatEndpoint(),
+  "\/api/stat.*" : new StatEndpoint(),
   "\/login$": new LoginEndpoint(),
-  // "^/logout$": new LogoutEndpoint(),
+  "\/logout$": new LogoutEndpoint(),
   "\/api/news": new NewsEndpoint(),
   "\/api/map.*": new MapEndpoint(),
   "\/api/admin/.*": new AdminEndpoint(),
@@ -31,7 +32,7 @@ const router = async (req, resp) => {
 
     // Verificam daca calea acestui request se potriveste
     if (regex.test(req.url)) {
-      console.log(`[INFO]: Am gasit calea ${req.url} si va fi rutat cate ${path}`);
+      console.log(`[INFO]: Am gasit calea ${req.url} si va fi rutat catre ${path}`);
       flag = true;
       await endpoint[req.method.toLowerCase()](req, resp);
       break;
