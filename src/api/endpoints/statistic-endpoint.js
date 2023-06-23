@@ -33,7 +33,7 @@ class StatEndpoint extends Endpoint {
             queryRegions(),
             queryTargets(),
             queryNationalities(),
-            queryWeaponTypes(), //main weapon
+            queryWeaponTypes(),
             queryAttackTypes(),
           ])
             .then(
@@ -94,16 +94,6 @@ class StatEndpoint extends Endpoint {
                       `<option value="${weaponType.id}">${weaponType.name}</option>`
                   )
                   .join("");
-
-                // -------------------------- Generate the options markup for WEAPONS ----------------------------
-                // const weapons = weaponRows.map((row) => {
-                //   return { id: row.id, name: row.weapon_type };
-                // });
-                // const weaponOptionsMarkup = weapons
-                //   .map(
-                //     (weapon) => `<option value="${weapon.id}">${weapon.name}</option>`
-                //   )
-                //   .join("");
 
                 const attackTypes = attackTypesRows.map((row) => {
                   return { id: row.id, name: row.attacktype };
@@ -196,16 +186,6 @@ class StatEndpoint extends Endpoint {
             argCtr++;
             values.push(nationalityIndex);
           }
-
-          // values = values.filter(function (element) {
-          //   return element !== -1;
-          // });
-
-          // if (values.length == 0) {
-          //   res.writeHead(400, { "Content-Type": "text/plain" });
-          //   res.end("No data provided.");
-          // }
-
           console.log("QUERYY: ", query);
 
           //weap, attac, targ, nationS
