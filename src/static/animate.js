@@ -168,13 +168,14 @@ function fetchOrganizationsAndPopulateSelect() {
 }
 // Add event listener to the select element
 const organizationSelect = document.getElementById('Organization');
-organizationSelect.addEventListener('click', function(event){
+organizationSelect.addEventListener('click', function(event) {
   if (!hasFetchedOrgs) {
     fetchOrganizationsAndPopulateSelect();
     hasFetchedOrgs = true; // Set the flag to true after the first fetch request
   }
   event.stopPropagation
 });
+organizationSelect.click();
 
 
 

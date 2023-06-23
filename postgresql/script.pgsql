@@ -382,3 +382,5 @@ CREATE TABLE IF NOT EXISTS sessions (
     email VARCHAR(255)
 );
 
+
+

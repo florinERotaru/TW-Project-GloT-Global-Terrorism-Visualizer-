@@ -14,7 +14,7 @@ const ENDPOINTS = {
   "\/app\/static/.*": new StaticEndpoint(),
   "\/static/.*": new StaticEndpoint(),
   "\/app\/.*": new HomeEndpoint(),
-  "\/api/stat" : new StatEndpoint(),
+  "\/api/stat.*" : new StatEndpoint(),
   "\/login$": new LoginEndpoint(),
   "\/logout$": new LogoutEndpoint(),
   "\/api/news": new NewsEndpoint(),

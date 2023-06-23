@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <title>TerroristTracker</title>
         <link rel="stylesheet" href="/static/styles.css">
@@ -82,59 +81,61 @@
             </div>
 
             <div class="section" id="stat">
-                <div class="section-header">Statistics </div>
-                <br>
+                <div class="section-header">Statistics</div>
+                <br />
                 <div class="horizontal-container">
-                    <form class="form" id="formId">
+                    <form class="form" id="formId" action="/api/stat" method="GET">
                         <label for="region">Select Region: </label>
-                        <br>
-                        <select id="region">
-                            <option value="1">Select region:</option>
-                            {{regionsOptions}}
-                          </select>
-                        <br>
-                        <label for="attack-type">Select Attack Type: </label>
-                        <br>
-                        <select id="attack-type">
-                            <option value="1">Select attack type:</option>
-                            {{weaponTypesOptions}}
-                          </select>
-                        <br>
-                        <label for="main-target">Select Main Target: </label>
-                        <br>
-                        <select id="main-target">
-                            <option value="1">Select target:</option>
-                            {{targetsOptions}}
-                          </select>
-                        <br>
-                        <label for="main-nationality">Select Main Nationality: </label>
-                        <select id="main-nationality">
-                            <option value="1">Target nationality:</option>
-                            {{nationalitiesOptions}}
-                          </select>
-                        <br>
-                        <label for="main-weapon">Select Main Weapon: </label>
-                        <br>
-                        <select id="main-weapon" name="main-weapon">
-                            <option value="1">Select main weapon:</option>
-                            {{weaponsOptions}}
-                          </select>
-                        <br>
-                        <label for="chart">Select-Chart: </label>
-                        <br>
-                        <select id="chart">
-                            <option value="1">Chart Type: </option>
-                            <option value="2">Pie Chart</option>
-                            <option value="3">Bar Chart</option>
-                            <option value="4">Line Chart</option>
-                            <option value="5">Scatter Chart</option>
+                        <br />
+                        <select id="region" name="region">
+                        <option value="1">Select region:</option>
+                        {{regionsOptions}}
+                        <option value="-1">Any</option>
                         </select>
-                        <input type="button" value="Analyze" id="generate-chart">
+                        <br />
+                        <label for="attack-type">Select Attack Type: </label>
+                        <br />
+                        <select id="attack-type" name="attack-type">
+                        <option value="1">Select attack type:</option>
+                        {{attackTypesOption}}
+                        <option value="-1">Any</option>
+                        </select>
+                        <br />
+                        <label for="main-target">Select Main Target: </label>
+                        <br />
+                        <select id="main-target" name="main-target">
+                        <option value="1">Select target:</option>
+                        {{targetsOptions}}
+                        <option value="-1">Any</option>
+                        </select>
+                        <br />
+                        <label for="main-nationality">Select Main Nationality: </label>
+                        <select id="main-nationality" name="main-nationality">
+                        <option value="1">Target nationality:</option>
+                        {{nationalitiesOptions}}
+                        <option value="-1">Any</option>
+                        </select>
+                        <br />
+                        <label for="main-weapon">Select Main Weapon: </label>
+                        <br />
+                        <select id="main-weapon" name="main-weapon">
+                        <option value="1">Select main weapon:</option>
+                        {{weaponTypesOptions}}
+                        <option value="-1">Any</option>
+                        </select>
+                        <br />
+                        <label for="chart">Select Chart Type: </label>
+                        <select id="chart">
+                        <option value="0">Chart Type:</option>
+                        <option value="1">Fatal vs Non-Fatal Attacks</option>
+                        <option value="2">Material Damages Chart</option>
+                        <option value="3">Deaths by Year Chart</option>
+                        </select>
+                        <br />
+                        <input type="submit" value="Analyze" id="generate-chart" />
                     </form>
-                    
                     <div class="chart">
-                        <div id="myPieChart"></div>
-                        <div id="myBarChart"></div>
+                        <div id="anyChart"></div>
                     </div>
                 </div>
                 <button class="export-button-stats" onclick="openPopupStats()">Export</button>
@@ -191,7 +192,6 @@
         </button>
         <script src="/static/fetchNews.js"></script>
         <script src="/static/scrollTopButton.js"> </script>
-        <script src="/static/statistics/filter.js"> </script>
         <script src="/static/animate.js"> </script>
         <script src="/static/route.js"></script>
         <script src="/static/export.js"></script>
