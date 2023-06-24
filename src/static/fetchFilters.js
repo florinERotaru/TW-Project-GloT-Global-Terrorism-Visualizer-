@@ -1,8 +1,6 @@
 function drawPieChart(items) {
   // Load the Visualization API and the corechart package
   google.charts.load("current", { packages: ["corechart"] });
-
-  // Set a callback function to run when the Google Charts library is loaded
   google.charts.setOnLoadCallback(() => createPieChart(items));
 }
 var dataTable = null;
@@ -47,10 +45,10 @@ function createPieChart(items) {
 }
 
 function drawLineChart(items) {
-  // Load the Visualization API and the corechart package
+ 
   google.charts.load("current", { packages: ["corechart"] });
 
-  // Set a callback function to run when the Google Charts library is loaded
+  
   google.charts.setOnLoadCallback(() => createLineChart(items));
 }
 
@@ -138,6 +136,9 @@ function createScatterChart(items) {
 document.getElementById("formId").addEventListener("submit", function (event) {
   event.preventDefault();
 
+  const submitButton = document.getElementById('generate-chart');
+  submitButton.disabled = true;
+
   const form = event.target;
   const url = form.getAttribute("action");
   const queryParams = new URLSearchParams(new FormData(form)).toString();
@@ -155,6 +156,7 @@ document.getElementById("formId").addEventListener("submit", function (event) {
       }
     })
     .then((jsonList) => {
+      submitButton.disabled = false;
       console.log("JSON: ", jsonList);
       const chartValue = document.getElementById("chart").value;
       if (chartValue == 1) {
@@ -166,6 +168,7 @@ document.getElementById("formId").addEventListener("submit", function (event) {
       }
     })
     .catch((error) => {
+      submitButton.disabled = false;
       console.error("Error submitting form:", error);
     });
 });

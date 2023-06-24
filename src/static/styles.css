@@ -152,7 +152,7 @@ a, .nav-bar button {
 
 #myBtn {
   display: none;
-  position: fixed; /* Fixed/sticky position */
+  position: fixed; /* Fixed position */
   bottom: 15px; /* Place the button at the bottom of the page */
   left: 25px;
   z-index: 99; /* Make sure it does not overlap */
