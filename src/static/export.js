@@ -51,7 +51,7 @@ function downloadChartAsCsv() {
 }
     
 function downloadMapAsPng() {
-    // asta dureaza mai mult, ar trebui un loading animation sau ceva. also asynchronous cumva.
+    
     leafletImage(map, async function (err, canvas) {
         const dataURL = await canvas.toDataURL();
 

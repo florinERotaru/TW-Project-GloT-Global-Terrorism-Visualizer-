@@ -19,16 +19,19 @@ const markers = [];
 document.getElementById('mapForm').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the default form submission behavior
 
+  const submitButton = document.getElementById('analyze-map');
+  submitButton.disabled = true;
+
   markers.forEach(function(marker) {
     map.removeLayer(marker);
   });
-  markers.length = 0; // Clear the markers array
+  markers.length = 0;
 
   const form = event.target;
   const url = form.getAttribute('action');
   const queryParams = new URLSearchParams(new FormData(form)).toString();
   const fullUrl = url + '?' + queryParams;
-  //here i receive jsons about attacks
+  // here i receive jsons about attacks
   fetch(fullUrl)
     .then(response => {
       console.log('Form submission successful');
@@ -41,6 +44,7 @@ document.getElementById('mapForm').addEventListener('submit', function(event) {
     })
     .then(jsonList =>{
       let attackCtr = 0;
+      submitButton.disabled = false;
       jsonList.forEach(item =>{
         const latitude = item.latitude;
         const longitude = item.longitude;
@@ -82,14 +86,16 @@ document.getElementById('mapForm').addEventListener('submit', function(event) {
     })
     .catch(error => {
       if (error.message === '400'){
+        submitButton.disabled = false;
         Swal.fire({
           title: 'Form is not filled in correctly.',
-          confirmButtonColor: '#000000', // Black color for the button
-          background: '#ffffff', // White background color
+          confirmButtonColor: '#000000',
+          background: '#ffffff',
         });
         
       } else {
         console.error('Error submitting form:', error);
+        submitButton.disabled = false;
       }
     });
 });
@@ -115,7 +121,7 @@ function handleMarkerClick(item) {
         month: 'long',
         day: 'numeric',
       });
-      // Handle the server response here
+      // Handle the server response
       const markerDetailsPanel = document.getElementById('marker-details');
       let markerDetailsContent = `
       <div style="overflow:auto; height: 82.9vh;">
@@ -133,12 +139,11 @@ function handleMarkerClick(item) {
       });
       markerDetailsContent+='</div>';
       markerDetailsPanel.innerHTML = markerDetailsContent;
-      markerDetailsPanel.style.display = 'block'; // Show the panel
-      const element = document.getElementById('marker-details'); // Replace 'elementId' with the actual ID of the element
+      markerDetailsPanel.style.display = 'block';
+      const element = document.getElementById('marker-details');
       element.scrollIntoView({ behavior: 'smooth' });
     })
     .catch(error => {
-      // Handle errors here
       console.error('Error:', error);
     });
 }
@@ -152,14 +157,14 @@ function fetchOrganizationsAndPopulateSelect() {
       organizationSelect.innerHTML = '';
       organizations.forEach(organization => {
         const option = document.createElement('option');
-        option.value = organization.name; // Assuming organization object has an 'id' property
-        option.textContent = organization.name; // Assuming organization object has a 'name' property
+        option.value = organization.name; 
+        option.textContent = organization.name;
         organizationSelect.appendChild(option);
         
       });
       const option = document.createElement('option');
-      option.value = 'Any'; // Assuming organization object has an 'id' property
-      option.textContent = 'Any'; // Assuming organization object has a 'name' property
+      option.value = 'Any';
+      option.textContent = 'Any';
       organizationSelect.appendChild(option);
     })
     .catch(error => {
@@ -171,7 +176,7 @@ const organizationSelect = document.getElementById('Organization');
 organizationSelect.addEventListener('click', function(event) {
   if (!hasFetchedOrgs) {
     fetchOrganizationsAndPopulateSelect();
-    hasFetchedOrgs = true; // Set the flag to true after the first fetch request
+    hasFetchedOrgs = true;
   }
   event.stopPropagation
 });
